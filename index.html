@@ -5,19 +5,35 @@
     <title>Reto 1</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
+
     <script type="text/javascript">
         $(() => $("#contenido").load("./main.html"));
     </script>
     <header>
         <nav>
+            <!-- Abrir en otra pestaña target="_blank" -->
             <a href="#" class="active">Home</a>
-            <a href="#" class="right">About</a>
+            <a href="#" class="right" id="botonAbout">About</a>
+            <i class="fa fa-cube"></i>
+            <i class="material-icons">blur_on</i>
         </nav>
     </header>
-    <div id="contenido"></div>
+    <div id="contenido">
+
+    </div>
+
+    <div id="modalAbout" class="modal">
+        <div class="modalContenido">
+            <span class="cerrarAbout">&times;</span>
+            <p>hola</p>
+        </div>
+    </div>
+    <script src="JavaScript/modalBox.js" type="text/javascript"></script>
     <footer>
         <div id="pie">Contacto</div>
     </footer>
