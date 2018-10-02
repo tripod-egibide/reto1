@@ -1,17 +1,31 @@
 <div class="row">
-    <div class="col66">
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button>
-    </div>
-    <div class="col33">
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button>
-    </div>
-</div>
+  <div class="col66">
+    <div class="animacion">
 
+    </div>
+    <div class="milimetros">
+      <button type="button" name="button">Jog-</button>
+      <button type="button" name="button">Jog+</button><br>
+      <form class="salto_milimetros" action="index.html" method="post">
+        <input type="number" name="slt_mm" value="" placeholder="Saltar al milimetro" min=0>
+        <input type="submit" name="" value="OK">
+      </form>
+    </div>
+    <div class="posicion">
+      <button type="button" name="button">Posicion Anterior</button>
+      <button type="button" name="button">Posicion Siguiente</button>
+      <form class="salto_posicion" action="index.html" method="post">
+        <select class="" name="posiciones">
+          <!--esto se deberá rellenar a partir de un script-->
+        </select>
+        <input type="submit" name="" value="OK">
+      </form>
+    </div>
+  </div>
+  <div class="col33">
+    <button>ON</button><button>OFF</button><br>
+    <button>Emergencia</button><br>
+    <button>Stop</button><br>
+    <button>Auto/Manual</button><br>
+  </div>
+  </div>
