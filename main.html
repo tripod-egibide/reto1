@@ -4,18 +4,18 @@
 
     </div>
     <div class="milimetros">
-      <button type="button" name="button">Jog-</button>
-      <button type="button" name="button">Jog+</button><br>
-      <form class="salto_milimetros" action="index.html" method="post">
-        <input type="number" name="slt_mm" value="" placeholder="Saltar al milimetro" min=0>
-        <input type="submit" name="" value="OK">
+      <button type="button" name="jog-" id="jog-">Jog-</button>
+      <button type="button" name="jog+" id="jog+">Jog+</button><br>
+      <form method="post">
+        <input type="number" name='"webdata".POSICION' placeholder="Saltar al milimetro" min=0>
+        <input type="submit" value="OK">
       </form>
     </div>
     <div class="posicion">
-      <button type="button" name="button">Posicion Anterior</button>
-      <button type="button" name="button">Posicion Siguiente</button>
-      <form class="salto_posicion" action="index.html" method="post">
-        <select class="" name="posiciones">
+      <button type="button" name="pos-" id="pos-">Posicion Anterior</button>
+      <button type="button" name="pos+" id="pos+">Posicion Siguiente</button>
+      <form method="post">
+        <select class="" name='"webdata".Algo, no se'>
           <!--esto se deberá rellenar a partir de un script-->
         </select>
         <input type="submit" name="" value="OK">
@@ -23,9 +23,9 @@
     </div>
   </div>
   <div class="col33">
-    <button>ON</button><button>OFF</button><br>
-    <button>Emergencia</button><br>
-    <button>Stop</button><br>
-    <button>Auto/Manual</button><br>
+    <button type="button" name="on" id="on">ON</button><button type="button" name="on" id="on">OFF</button><br>
+    <button type="button" name="emergencia" id="emrg">Emergencia</button><br>
+    <button type="button" name="stop" id="stop">Stop</button><br>
+    <button type="button" name="auto" id="auto">Auto/Manual</button><br>
   </div>
   </div>
