@@ -1,20 +1,45 @@
+<!-- AWP_In_Variable Name='"webstorage.JOG+"' -->
+<!-- AWP_In_Variable Name='"webstorage.JOG-"' -->
+<!-- AWP_In_Variable Name='"webstorage.ON"' -->
+<!-- AWP_In_Variable Name='"webstorage.MARCHA"' -->
+<!-- AWP_In_Variable Name='"webstorage.STOP"' -->
+<!-- AWP_In_Variable Name='"webstorage.M/AUTO"' -->
+<!-- AWP_In_Variable Name='"webstorage.FC1"' -->
+<!-- AWP_In_Variable Name='"webstorage.FC2"' -->
+<!-- AWP_In_Variable Name='"webstorage.FC3"' -->
+<!-- AWP_In_Variable Name='"webstorage.POSICION1"' -->
+<!-- AWP_In_Variable Name='"webstorage.POSICION2"' -->
+<!-- AWP_In_Variable Name='"webstorage.POSICION3"' -->
+<!-- AWP_In_Variable Name='"webstorage.TargetPosition"' -->
+<!-- AWP_In_Variable Name='"webstorage.CurrentPosition"' -->
+<!-- AWP_In_Variable Name='"webstorage.POSICION"' -->
+<!-- AWP_In_Variable Name='"webstorage.VELOCIDAD"' -->
+<!-- AWP_In_Variable Name='"webstorage.pos1"' -->
+<!-- AWP_In_Variable Name='"webstorage.velo1"' -->
+<!-- AWP_In_Variable Name='"webstorage.pos2"' -->
+<!-- AWP_In_Variable Name='"webstorage.velo2"' -->
+<!-- AWP_In_Variable Name='"webstorage.pos3"' -->
+<!-- AWP_In_Variable Name='"webstorage.velo3"' -->
+
 <script type="text/javascript" src="js/botones.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="row">
   <div class="col66">
     <div class="animacion">
-      <!--Pendinte, toca esperar a que demos esto en DIW-->
+      <!--Pendiente, toca esperar a que demos esto en DIW-->
     </div>
     <div class="milimetros">
-      <button type="button" name="jog-" id="jog-">Jog-</button>
-      <button type="button" name="jog+" id="jog+">Jog+</button><br>
+      <!-- estos dos, por su comportamiento especial, requieren llamar a la -->
+      <button type="button" id="jog-" onmousedown="booTrue('JOG-')" onmouseup="booFalse('JOG-')">Jog-</button>
+      <button type="button" id="jog+" onmousedown="booTrue('JOG+')" onmouseup="booFalse('JOG+')">Jog+</button><br>
       <form method="post">
-        <input type="number" name='"webdata".POSICION' placeholder="Saltar al milimetro" min=0>
+        <input type="number" placeholder="Salto de posición" min=0>
         <input type="submit" value="OK">
       </form>
     </div>
     <div class="posicion">
-      <button type="button" name="pos-" id="pos-">Posicion Anterior</button>
-      <button type="button" name="pos+" id="pos+">Posicion Siguiente</button>
+      <button type="button" name="pos-" id="pos-">Posición Anterior</button>
+      <button type="button" name="pos+" id="pos+">Posición Siguiente</button>
       <form method="post">
         <select class="" name='"webdata".Algo, no se'>
           <!--esto se deberá rellenar a partir de un script-->
@@ -24,9 +49,9 @@
     </div>
   </div>
   <div class="col33">
-    <button type="button" name="on" id="on">ON</button><button type="button" name="on" id="on">OFF</button><br>
-    <button type="button" name="emergencia" id="emrg">Emergencia</button><br>
-    <button type="button" name="stop" id="stop">Stop</button><br>
-    <button type="button" name="auto" id="auto">Auto/Manual</button><br>
+    <button type="button" name="on" id="on" onclick="OnReset()">ON</button><button type="button" name="on" id="on">OFF</button><br>
+    <button type="button" name="emergencia" id="emrg" onclick="Emergencia()">Emergencia</button><br>
+    <button type="button" name="parar" id="parar" onclick="Parar()">Stop</button><br>
+    <button type="button" name="auto" id="auto" onclick="AutomaticoManual()">Auto/Manual</button><br>
   </div>
-  </div>
+</div>
