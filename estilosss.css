@@ -1,9 +1,8 @@
-/*user-select: all;*/
 * {
     box-sizing: border-box;
 }
 body{
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     margin: 0;
     background-color: #dcdcdd;
     color: #46494c;
@@ -13,7 +12,7 @@ body{
     margin: auto;
 }
 .row{
-    width: 80%;
+    width: 60%;
     margin: auto;
 }
 .row:after{
@@ -21,24 +20,15 @@ body{
     display: table;
     clear: both;
 }
-.col100{
-    position: relative;
-    float: left;
-    width: 100%;
-}
 .col33{
     float: left;
-    width: 100%;
-}
-.col33Fija{
-    float: left;
-    width: 33.3%;
-    text-align: center;
-    border: 1px solid black;
+    width: 33%;
+    background-color: #dcdcdd;
 }
 .col66{
     float: left;
-    width: 100%;
+    width: 67%;
+    background-color: #dcdcdd;
 }
 header {
     padding: 10px;
@@ -69,7 +59,7 @@ nav {
     top: 0;
 }
 nav a {
-    width: 100%;
+    width: 50%;
     float: left;
     display: block;
     color: #1985a1;
@@ -133,25 +123,9 @@ button{
     text-decoration: none;
     cursor: pointer;
 }
-i.b{
-    padding-left: 15%;
-    position: absolute;
-}
-i.a{
 
-    color: red;
-    animation-name: example;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    /*animation-timing-function: linear;*/
-    /*animation-timing-function: ease;*/
-    /*animation-timing-function: ease-in;*/
-    /*animation-timing-function: ease-out;*/
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: both;
-
-    /*animation-play-state: paused;*/
+i{
+    color:red;
 }
 
 /* Animaciones */
@@ -159,43 +133,23 @@ i.a{
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
+
 @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
-
-@keyframes example {
-    0%  {color:red; padding-left: 15%;}
-    50%  {color:green; padding-left: 49%;}
-    100% {color:blue; padding-left: 83%;}
-}
-
 /* Responsividad */
-/* @media only screen */
-/* @media all */
-/* 320 768 1024 */
-
-/* Tablet */
-@media screen and (min-width:320px) {
-    .col66 {
-        width:67%;
-    }
-    .col33 {
-        width:33%;
-    }
-    nav a {
-        width: 50%;
+/* @media only screen and (min-width:620px) */
+@media screen and (max-width:600px) {
+    nav a, .col33, .col66 {
+        width:100%;
     }
 }
-/* Pantalla */
-@media screen and (min-width:768px) {
-    .col66 {
-        width:50%;
-    }
-    .col33 {
-        width:50%;
-    }
+@media only screen and (min-width: 600px) {
     nav a {
-        width: Auto;
+        width:100%;
     }
+}
+@media only screen and (max-width: 768px) {
+
 }
