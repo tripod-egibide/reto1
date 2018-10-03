@@ -1,9 +1,8 @@
 ////universales
 function Boton(variable) {
   //funcionalidad de botones normales, enciende y luego apaga
-  booTrue(variable)
-  setTimeout(() =>
-    booFalse(variable)), 200)
+  booTrue(variable);
+  setTimeout((() => booFalse(variable)), 200);
 }
 
 function cambiarValor(variable, valor) {
@@ -11,27 +10,39 @@ function cambiarValor(variable, valor) {
   $($.ajax({
     type: "POST",
     data: '"WEBSTORAGE".' + variable + ' = ' + valor
-  }))
+  }));
 }
 
 function booTrue(variable) {
   //cambia un booleano a verdadero
-  cambiarValor(variable, "true")
+  cambiarValor(variable, "true");
 }
 
 function booFalse(variable) {
   //cambia un booleano a falso
-  cambiarValor(variable, "false")
+  cambiarValor(variable, "false");
 }
 
+function obtenerValor(elemento) {
+  //como no podemos usar $(#elemento).val(), usamos esto
+  //aprovecho esta oportunidad para expresar mi descontento con estas absurdas limitaciones
+  return document.getElementById(elemento).value;
+}
+
+function habilitarElemento(elemento, booleano) {
+  //habilita o deshabilita un elemento dependiendo del valor del booleano
+  document.getElementById(elemento).disabled = !booleano;
+}
 ////animacion
 //puede que aquí no entre nada, ya veremos
 
 ////milimetros
-
+$("#slt_pos_bt").click(() => cambiarValor("POSICION", obtenerValor("#slt_pos_in")));
 
 ////posicion
-
+$("#pos-").click(() => Boton("POS-"));
+$("#pos+").click(() => Boton("POS+"));
+$("#slt_fase_bt").click(() => cambiarValor("POSICION", obtenerValor("#slt_fase_in")));
 
 ////col33
 
@@ -42,26 +53,33 @@ function OnReset() {
 
 // función para PARAR en modo emergencia
 
-function Emergencia() {
-  boton("EMERGENCIA");
+function marcha() {
+  boton("MARCHA");
 }
 
 //funcion para PARAR
-function Parar() {
-  boton("PARAR");
+function parar() {
+  boton("STOP");
 }
 
 //cambia el estado automatico a manual y viceversa
-function AutomaticoManual() {
+function automaticoManual() {
   let estado = true;
   // COMPROBAR ESTADO INSERT COD
-  setInterval(function() {
-    $.get(":="
-      mis_datos ".contador:",
-      function(result) {
-        $('#etiqueta').text(result.trim());
-      });
-  }, 1000);
+
+
+  $(document).ready(function() {
+
+    $.get("leer_variable.html", function(result) {
+      if (isNaN(result.trim)) {
+
+      } else {
+
+      }
+      alert(result.trim())
+
+    });
+  });
 
   //
   if (estado == true) {
@@ -70,3 +88,5 @@ function AutomaticoManual() {
     booFalse("AUTOMATICO")
   }
 }
+
+////por organizar

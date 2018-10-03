@@ -29,22 +29,24 @@
       <!--Pendiente, toca esperar a que demos esto en DIW-->
     </div>
     <div class="milimetros">
-      <!-- estos dos, por su comportamiento especial, requieren llamar a la -->
+      <!-- estos dos, por su comportamiento especial, requieren llamar a la funcion desde aquí-->
+      <!-- además, puede que ni existan, hay que preguntar a los de abajo PRONTO-->
       <button type="button" id="jog-" onmousedown="booTrue('JOG-')" onmouseup="booFalse('JOG-')">Jog-</button>
       <button type="button" id="jog+" onmousedown="booTrue('JOG+')" onmouseup="booFalse('JOG+')">Jog+</button><br>
       <form method="post">
-        <input type="number" placeholder="Salto de posición" min=0>
-        <input type="submit" value="OK">
+        <input type="number" placeholder="Salto de posición" min=0 id="slt_pos_in">
+        <input type="submit" value="OK" id="slt_pos_bt">
       </form>
     </div>
     <div class="posicion">
       <button type="button" name="pos-" id="pos-">Posición Anterior</button>
       <button type="button" name="pos+" id="pos+">Posición Siguiente</button>
       <form method="post">
-        <select class="" name='"webdata".Algo, no se'>
+        <select id="slt_fase_in" name='"webdata".Algo, no se'>
           <!--esto se deberá rellenar a partir de un script-->
+          <!-- preguntar a nieves: vale la pena hacer esto así, y como? -->
         </select>
-        <input type="submit" name="" value="OK">
+        <input id="slt_fase_bt" type="submit" name="" value="OK">
       </form>
     </div>
   </div>
@@ -54,4 +56,10 @@
     <button type="button" name="parar" id="parar" onclick="Parar()">Stop</button><br>
     <button type="button" name="auto" id="auto" onclick="AutomaticoManual()">Auto/Manual</button><br>
   </div>
+</div>
+
+<div class="por_organizar">
+  <button type="button" name="Sensor 1" id="fc1">FC1</button>
+  <button type="button" name="Sensor 2" id="fc2">FC1</button>
+  <button type="button" name="Sensor 3" id="fc3">FC1</button>
 </div>
