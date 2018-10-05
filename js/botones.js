@@ -9,22 +9,22 @@ $(document).ready(function() {
   setInterval(function() {
     $.get("htm/TargetPosition.htm", function(result) {
       targetPosition = result.toString()
-      $("#tar_pos").load(targetPosition)
+      $("#tar_pos").text(targetPosition)
     });
     $.get("htm/CurrentPosition.htm", function(result) {
       currentPosition = result.toString()
-      $("#cur_pos").load(currentPosition)
+      $("#cur_pos").text(targetPosition)
       // TODO: llamar a las funciones de la animacion dependiendo de la posicion del aparato
     });
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString()
       // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
     });
-    $.get("htm/alert1.htm", function(result) {
-      alert1 = result.toString()
-      if (alert1 != 0) {
+    $.get("htm/alarma1.htm", function(result) {
+      alarma1 = result.toString()
+      if (alarma1 != 0) {
         // TODO: mejorar esto, no permitir continuar hasta resolver el problema
-        alert("Alerta: " + alert1 +
+        alert("Alarma: " + alarma1 +
           "\nPor favor solucione el problema y pulse el boton de rearme.")
       }
     });
