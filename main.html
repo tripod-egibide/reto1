@@ -35,8 +35,8 @@
     </div>
     <div class="controles">
       <div class="manual">
-        <button type="button" id="jog-" onmousedown="booTrue('JOG-')" onmouseup="booFalse('JOG-')">Jog-</button>
-        <button type="button" id="jog+" onmousedown="booTrue('JOG+')" onmouseup="booFalse('JOG+')">Jog+</button><br>
+        <button type="button" id="jog-" onmousedown="cambiarValor('JOG-', true)" onmouseup="cambiarValor('JOG-', false)">Jog-</button>
+        <button type="button" id="jog+" onmousedown="cambiarValor('JOG+', true)" onmouseup="cambiarValor('JOG+', false)">Jog+</button><br>
         <form method="post">
           <input type="number" placeholder="Salto de posición" min=0 max=50000 id="slt_pos_in">
           <input type="submit" value="OK" id="slt_pos_bt">
@@ -49,11 +49,11 @@
       <div class="auto">
         <button type="button" name="Sensor 1" id="fc1">FC1</button>
         <button type="button" name="Sensor 2" id="fc2">FC2</button>
-        <button type="button" name="Sensor 3" id="fc3">FC3</button> <br>
+        <button type="button" name="Sensor 3" id="fc3">FC3</button><br>
         <form method="post">
           <input type="number" placeholder="Posicion 1" min=0 max=50000 id="pos1">
           <input type="number" placeholder="Posicion 2" min=0 max=50000 id="pos2">
-          <input type="number" placeholder="Posicion 3" min=0 max=50000 id="pos3"> <br>
+          <input type="number" placeholder="Posicion 3" min=0 max=50000 id="pos3"><br>
           <input type="number" placeholder="Velocidad 1" min=0 id="vel1">
           <input type="number" placeholder="Velocidad 2" min=0 id="vel2">
           <input type="number" placeholder="Velocidad 3" min=0 id="vel3">
@@ -72,7 +72,8 @@
 </div>
 <div class="info">
   <div class="lectura">
-    <p>Posicion actual: :="webdata".CurrentPosition:< /p> <p>Posicion destino: :="webdata".TargetPosition:</p>
-    <p id="alarma">:="webdata".alarma1:</p>
+    <p>Posicion actual: <span id="cur_pos"></span></p>
+    <p>Posicion destino: <span id="tar_pos"></span></p>
+    <p id="alarma"><span id="alarma1"></span></p>
   </div>
 </div>
