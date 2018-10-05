@@ -1,4 +1,5 @@
 ////carga de datos
+// TODO: probar este bloque
 let targetPosition, currentPosition, alarma1, auto;
 
 $(document).ready(function() {
@@ -11,21 +12,28 @@ $(document).ready(function() {
     });
     $.get("htm/CurrentPosition.htm", function(result) {
       currentPosition = result
+      // TODO: llamar a las funciones de la animacion dependiendo de la posicion del aparato
     });
     $.get("htm/MAUTO.htm", function(result) {
       auto = result
     });
     $.get("htm/alert1.htm", function(result) {
       alert1 = result
+      if (alert1 != 0) {
+        // TODO: mejorar esto, no permitir continuar hasta resolver el problema
+        alert("Alerta: " + alert1 +
+          "\nPor favor solucione el problema y pulse el boton de rearme.")
+      }
     });
 
   }, 100);
 });
-////universales
+
+////funciones universales
 function boton(variable) {
   //funcionalidad de botones normales, enciende y luego apaga
-  booTrue(variable);
-  setTimeout((() => booFalse(variable)), 200);
+  cambiarValor(variable, true);
+  setTimeout((() => cambiarValor(variable, false)), 200);
 }
 
 function cambiarValor(variable, valor) {
@@ -34,16 +42,6 @@ function cambiarValor(variable, valor) {
     type: "POST",
     data: '"webdata".' + variable + ' = ' + valor
   }));
-}
-
-function booTrue(variable) {
-  //cambia un booleano a verdadero
-  cambiarValor(variable, "true");
-}
-
-function booFalse(variable) {
-  //cambia un booleano a falso
-  cambiarValor(variable, "false");
 }
 
 function click(elemento, funcion) {
@@ -72,23 +70,14 @@ function habilitarElemento(elemento, booleano) {
   //habilita o deshabilita un elemento dependiendo del valor del booleano
   document.getElementById(elemento).disabled = !booleano;
 }
+
 ////animacion
 //puede que aquí no entre nada, ya veremos
 
-////milimetros
-click("#slt_pos_bt", cambiarValor("POSICION", leerElemento("#slt_pos_in")));
-
-////posicion
-click("#pos1", boton("POSICION1"));
-click("#pos2", boton("POSICION2"));
-click("#pos3", boton("POSICION3"));
-
-////por organizar
+////auto
 click("#fc1", boton("FC1"));
 click("#fc2", boton("FC2"));
 click("#fc3", boton("FC3"));
-
-click("#vel_bt", cambiarValor("POSICION", leerElemento("#vel_in")));
 click("#pos_vel_bt", () => {
   cambiarValor("pos1", leerElemento("#pos1"))
   cambiarValor("vel1", leerElemento("#vel1"))
@@ -98,11 +87,34 @@ click("#pos_vel_bt", () => {
   cambiarValor("vel3", leerElemento("#vel3"))
 });
 
+////manual
+//estas tres luego estarán asociadas a la animacion, pero se quedan aqui por ahora
+click("#pos1", boton("POSICION1"));
+click("#pos2", boton("POSICION2"));
+click("#pos3", boton("POSICION3"));
+
+click("#slt_pos_bt", cambiarValor("POSICION", leerElemento("#slt_pos_in")));
+click("#vel_bt", cambiarValor("POSICION", leerElemento("#vel_in")));
+
 ////col33
+click("#auto", () => {
+  if (auto == true || auto == "true") {
+    cambiarValor("M/AUTO", false)
+    auto = false;
+  } else {
+    cambiarValor("M/AUTO", true)
+    auto = true;
+  }
+})
+click("#marcha", boton("MARCHA"))
 click("#origen", boton("InicioOrigen"))
 click("#rearme", boton("REARME"))
 click("#stop", boton("STOP"))
 
+
+
+
+/* tierra de jon
 //comprueba el estado de la maquina
 function estadoAutoManual() {
 
@@ -137,4 +149,4 @@ function enviarDivs(estado) {
 
   habilitarElemento("milimetros", estado);
   habilitarElemento("posicion", estado);
-}
+}*/
