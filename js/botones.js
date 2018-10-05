@@ -8,17 +8,20 @@ $(document).ready(function() {
   });
   setInterval(function() {
     $.get("htm/TargetPosition.htm", function(result) {
-      targetPosition = result
+      targetPosition = result.toString()
+      $("#tar_pos").load(targetPosition)
     });
     $.get("htm/CurrentPosition.htm", function(result) {
-      currentPosition = result
+      currentPosition = result.toString()
+      $("#cur_pos").load(currentPosition)
       // TODO: llamar a las funciones de la animacion dependiendo de la posicion del aparato
     });
     $.get("htm/MAUTO.htm", function(result) {
-      auto = result
+      auto = result.toString()
+      // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
     });
     $.get("htm/alert1.htm", function(result) {
-      alert1 = result
+      alert1 = result.toString()
       if (alert1 != 0) {
         // TODO: mejorar esto, no permitir continuar hasta resolver el problema
         alert("Alerta: " + alert1 +
