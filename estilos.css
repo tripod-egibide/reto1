@@ -1,4 +1,15 @@
-/*user-select: all;*/
+/*user-select: all;
+    :root{
+        --main-color: hotpink;
+        --pane-padding: 5px 42px;
+    }
+    #div1 {
+    background-color: var(--main-color);
+    padding: var(--pane-padding);
+    }
+
+document.getElementById("elemento").style.setProperty(--main-color, "blue")
+*/
 * {
     box-sizing: border-box;
 }
