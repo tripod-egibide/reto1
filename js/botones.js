@@ -64,11 +64,6 @@ function leerVariable(variable) {
   })
 }
 
-function estadoAutoManual() {
-  //Función al cargar la web, comprueba si está en automático o manual
-
-}
-
 function habilitarElemento(elemento, booleano) {
   //habilita o deshabilita un elemento dependiendo del valor del booleano
   document.getElementById(elemento).disabled = !booleano;
@@ -108,8 +103,8 @@ click("#auto", () => {
     cambiarValor("M/AUTO", true)
     auto = true;
   }
-})
-click("#marcha", boton("MARCHA"))
-click("#origen", boton("InicioOrigen"))
-click("#rearme", boton("REARME"))
-click("#stop", boton("STOP"))
+});
+click("#marcha", boton("MARCHA"));
+click("#origen", boton("InicioOrigen"));
+click("#rearme", boton("REARME"));
+click("#stop", boton("STOP"));
