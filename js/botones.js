@@ -87,9 +87,9 @@ click("#pos_vel_bt", () => {
 
 ////manual
 //estas tres luego estarán asociadas a la animacion, pero se quedan aqui por ahora
-click("#pos1", boton("POSICION1"));
-click("#pos2", boton("POSICION2"));
-click("#pos3", boton("POSICION3"));
+click("#posicion1", boton("POSICION1"));
+click("#posicion2", boton("POSICION2"));
+click("#posicion3", boton("POSICION3"));
 
 click("#slt_pos_bt", cambiarValor("POSICION", leerElemento("#slt_pos_in")));
 click("#vel_bt", cambiarValor("POSICION", leerElemento("#vel_in")));
