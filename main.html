@@ -1,32 +1,98 @@
+<!-- AWP_In_Variable Name='"webdata.JOG+"' -->
+<!-- AWP_In_Variable Name='"webdata.JOG-"' -->
+<!-- AWP_In_Variable Name='"webdata.REARME"' -->
+<!-- AWP_In_Variable Name='"webdata.InicioOrigen"' -->
+<!-- AWP_In_Variable Name='"webdata.MARCHA"' -->
+<!-- AWP_In_Variable Name='"webdata.STOP"' -->
+<!-- AWP_In_Variable Name='"webdata.M/AUTO"' -->
+<!-- AWP_In_Variable Name='"webdata.FC1"' -->
+<!-- AWP_In_Variable Name='"webdata.FC2"' -->
+<!-- AWP_In_Variable Name='"webdata.FC3"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION1"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION2"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION3"' -->
+<!-- AWP_In_Variable Name='"webdata.TargetPosition"' -->
+<!-- AWP_In_Variable Name='"webdata.CurrentPosition"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION"' -->
+<!-- AWP_In_Variable Name='"webdata.VELOCIDAD"' -->
+<!-- AWP_In_Variable Name='"webdata.pos1"' -->
+<!-- AWP_In_Variable Name='"webdata.velo1"' -->
+<!-- AWP_In_Variable Name='"webdata.pos2"' -->
+<!-- AWP_In_Variable Name='"webdata.velo2"' -->
+<!-- AWP_In_Variable Name='"webdata.pos3"' -->
+<!-- AWP_In_Variable Name='"webdata.velo3"' -->
+<!-- AWP_In_Variable Name='"webdata.alarma1"' -->
+
 <script type="text/javascript" src="js/botones.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="row">
   <div class="col66">
     <div class="animacion">
-      <!--Pendinte, toca esperar a que demos esto en DIW-->
-    </div>
-    <div class="milimetros">
-      <button type="button" name="jog-" id="jog-">Jog-</button>
-      <button type="button" name="jog+" id="jog+">Jog+</button><br>
-      <form method="post">
-        <input type="number" name='"webdata".POSICION' placeholder="Saltar al milimetro" min=0>
-        <input type="submit" value="OK">
-      </form>
+      <button type="button" name="Posicion 1" id="pos1">Posicion 1</button>
+      <button type="button" name="Posicion 2" id="pos2">Posicion 2</button>
+      <button type="button" name="Posicion 3" id="pos3">Posicion 2</button>
     </div>
     <div class="posicion">
-      <button type="button" name="pos-" id="pos-">Posicion Anterior</button>
-      <button type="button" name="pos+" id="pos+">Posicion Siguiente</button>
-      <form method="post">
-        <select class="" name='"webdata".Algo, no se'>
-          <!--esto se deberá rellenar a partir de un script-->
-        </select>
-        <input type="submit" name="" value="OK">
-      </form>
+      <div class="manual">
+        <button type="button" id="jog-" onmousedown="booTrue('JOG-')" onmouseup="booFalse('JOG-')">Jog-</button>
+        <button type="button" id="jog+" onmousedown="booTrue('JOG+')" onmouseup="booFalse('JOG+')">Jog+</button><br>
+        <form method="post">
+          <input type="number" placeholder="Salto de posición" min=0 max=50000 id="slt_pos_in">
+          <input type="submit" value="OK" id="slt_pos_bt">
+        </form>
+        <form method="post">
+          <input type="number" placeholder="Velocidad" min=0 id="vel_in">
+          <input type="submit" value="OK" id="vel_bt">
+        </form>
+      </div>
+      <div class="auto">
+        <button type="button" name="Sensor 1" id="fc1">FC1</button>
+        <button type="button" name="Sensor 2" id="fc2">FC2</button>
+        <button type="button" name="Sensor 3" id="fc3">FC3</button> <br>
+        <form method="post">
+          <input type="number" placeholder="Posicion 1" min=0 max=50000 id="pos1">
+          <input type="number" placeholder="Posicion 2" min=0 max=50000 id="pos2">
+          <input type="number" placeholder="Posicion 3" min=0 max=50000 id="pos3"> <br>
+          <input type="number" placeholder="Velocidad 1" min=0 id="vel1">
+          <input type="number" placeholder="Velocidad 2" min=0 id="vel2">
+          <input type="number" placeholder="Velocidad 3" min=0 id="vel3">
+          <input type="submit" value="OK" id="pos_vel_bt">
+        </form>
+      </div>
     </div>
   </div>
   <div class="col33">
-    <button type="button" name="on" id="on">ON</button><button type="button" name="on" id="on">OFF</button><br>
-    <button type="button" name="emergencia" id="emrg">Emergencia</button><br>
-    <button type="button" name="stop" id="stop">Stop</button><br>
     <button type="button" name="auto" id="auto">Auto/Manual</button><br>
+    <button type="button" name="marcha" id="marcha">Marcha</button>
+    <button type="button" name="origen" id="origen">Origen</button><br>
+    <button type="button" name="rearme" id="rearme">Rearme</button>
+    <button type="button" name="stop" id="stop">Stop</button>
   </div>
+</div>
+
+<div class="por_organizar">
+  <div class="lectura">
+    <p>Posicion actual: :="webdata".CurrentPosition:< /p> <p>Posicion destino: :="webdata".TargetPosition:</p>
+    <p id="alarma">:="webdata".alarma1:</p>
   </div>
+  <div class="manual">
+    <form method="post">
+      <input type="number" placeholder="Velocidad" min=0 id="vel_in">
+      <input type="submit" value="OK" id="vel_bt">
+    </form>
+  </div>
+  <div class="auto">
+    <button type="button" name="Sensor 1" id="fc1">FC1</button>
+    <button type="button" name="Sensor 2" id="fc2">FC2</button>
+    <button type="button" name="Sensor 3" id="fc3">FC3</button>
+    <form method="post">
+      <input type="number" placeholder="Velocidad 1" min=0 id="vel1">
+      <input type="number" placeholder="Posicion 1" min=0 max=50000 id="pos1">
+      <input type="number" placeholder="Velocidad 2" min=0 id="vel2">
+      <input type="number" placeholder="Posicion 2" min=0 max=50000 id="pos2">
+      <input type="number" placeholder="Velocidad 3" min=0 id="vel3">
+      <input type="number" placeholder="Posicion 3" min=0 max=50000 id="pos3">
+      <input type="submit" value="OK" id="pos_vel_bt">
+    </form>
+  </div>
+</div>
