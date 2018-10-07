@@ -24,7 +24,7 @@ body{
     margin: auto;
 }
 .row{
-    width: 80%;
+    width: 60%;
     margin: auto;
 }
 .row:after{
@@ -32,24 +32,15 @@ body{
     display: table;
     clear: both;
 }
-.col100{
-    position: relative;
-    float: left;
-    width: 100%;
-}
 .col33{
     float: left;
-    width: 100%;
-}
-.col33Fija{
-    float: left;
-    width: 33.3%;
-    text-align: center;
-    border: 1px solid black;
+    width: 33%;
+    background-color: #dcdcdd;
 }
 .col66{
     float: left;
-    width: 100%;
+    width: 67%;
+    background-color: #dcdcdd;
 }
 header {
     padding: 10px;
@@ -57,10 +48,6 @@ header {
     color: #dcdcdd;
 }
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     padding: 10px;
     text-align: center;
     color: #dcdcdd;
@@ -80,7 +67,6 @@ nav {
     top: 0;
 }
 nav a {
-    width: 100%;
     float: left;
     display: block;
     color: #1985a1;
@@ -100,7 +86,6 @@ nav a.active {
     color: #1985a1;
 }
 button{
-    width: 100%;
     background-color: transparent;
     color: white;
     border: 1px solid white;
@@ -126,9 +111,9 @@ button{
     border-radius: 0.5em;
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
+    -webkit-animation-name: about;
     -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
+    animation-name: about;
     animation-duration: 0.4s;
     text-align: center;
 }
@@ -143,6 +128,19 @@ button{
     color: #46494c;
     text-decoration: none;
     cursor: pointer;
+}
+
+/*PRUEBAS*/
+.col100{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.col33Fija{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    border: 1px solid black;
 }
 i.b{
     padding-left: 15%;
@@ -175,11 +173,11 @@ i.c{
 }
 
 /* Animaciones */
-@-webkit-keyframes animatetop {
+@-webkit-keyframes about {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
-@keyframes animatetop {
+@keyframes about {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }

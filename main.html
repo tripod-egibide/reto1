@@ -1,37 +1,98 @@
-<div class="row" id="grafico">
-    <button onclick="go()">Go</button>
-    <button onclick="stop()">Stop</button>
-    <button onclick="fase12()">fase12</button>
-    <button onclick="fase23()">fase23</button>
-    <button onclick="fase31()">fase31</button>
-    <div class="col100">
-        <i class="fa fa-arrow-right b" id="goAnimacion"></i>
-    </div>
-    <div class="col33Fija">
-        <p>1</p>
-    </div>
-    <div class="col33Fija">
-        <p>2</p>
-    </div>
-    <div class="col33Fija">
-        <p>3</p>
-    </div>
+<!-- AWP_In_Variable Name='"webdata.JOG+"' -->
+<!-- AWP_In_Variable Name='"webdata.JOG-"' -->
+<!-- AWP_In_Variable Name='"webdata.REARME"' -->
+<!-- AWP_In_Variable Name='"webdata.InicioOrigen"' -->
+<!-- AWP_In_Variable Name='"webdata.MARCHA"' -->
+<!-- AWP_In_Variable Name='"webdata.STOP"' -->
+<!-- AWP_In_Variable Name='"webdata.M/AUTO"' -->
+<!-- AWP_In_Variable Name='"webdata.FC1"' -->
+<!-- AWP_In_Variable Name='"webdata.FC2"' -->
+<!-- AWP_In_Variable Name='"webdata.FC3"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION1"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION2"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION3"' -->
+<!-- AWP_In_Variable Name='"webdata.TargetPosition"' -->
+<!-- AWP_In_Variable Name='"webdata.CurrentPosition"' -->
+<!-- AWP_In_Variable Name='"webdata.POSICION"' -->
+<!-- AWP_In_Variable Name='"webdata.VELOCIDAD"' -->
+<!-- AWP_In_Variable Name='"webdata.pos1"' -->
+<!-- AWP_In_Variable Name='"webdata.velo1"' -->
+<!-- AWP_In_Variable Name='"webdata.pos2"' -->
+<!-- AWP_In_Variable Name='"webdata.velo2"' -->
+<!-- AWP_In_Variable Name='"webdata.pos3"' -->
+<!-- AWP_In_Variable Name='"webdata.velo3"' -->
+<!-- AWP_In_Variable Name='"webdata.alarma1"' -->
 
+<div class="row">
+  <div class="col66">
+    <div class="animacion">
+      <div class="col100">
+        <button onclick="go()">Go</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="fase12()">fase12</button>
+        <button onclick="fase23()">fase23</button>
+        <button onclick="fase31()">fase31</button>
+        <i class="b" id="goAnimacion">o</i>
+      </div>
+      <div class="col33Fija">
+        <p>1</p>
+      </div>
+      <div class="col33Fija">
+        <p>2</p>
+      </div>
+      <div class="col33Fija">
+        <p>3</p>
+      </div>
+      <!-- esto se puede quitar en lo que los graficos de la animacion est�n hechos -->
+      <button type="button" id="posicion1">Posicion 1</button>
+      <button type="button" id="posicion2">Posicion 2</button>
+      <button type="button" id="posicion3">Posicion 2</button>
+    </div>
+    <div class="controles">
+      <div class="manual">
+        <button type="button" id="jog-" onmousedown="cambiarValor('JOG-', true)" onmouseup="cambiarValor('JOG-', false)">Jog-</button>
+        <button type="button" id="jog+" onmousedown="cambiarValor('JOG+', true)" onmouseup="cambiarValor('JOG+', false)">Jog+</button><br>
+        <form method="post">
+          <input type="number" placeholder="Salto de posici�n" min=0 max=50000 id="slt_pos_in">
+          <input type="submit" value="OK" id="slt_pos_bt">
+        </form>
+        <form method="post">
+          <input type="number" placeholder="Velocidad" min=0 id="vel_in">
+          <input type="submit" value="OK" id="vel_bt">
+        </form>
+      </div>
+      <div class="auto">
+        <button type="button" name="Sensor 1" id="fc1">FC1</button>
+        <button type="button" name="Sensor 2" id="fc2">FC2</button>
+        <button type="button" name="Sensor 3" id="fc3">FC3</button><br>
+        <form method="post">
+          <input type="number" placeholder="Posicion 1" min=0 max=50000 id="pos1">
+          <input type="number" placeholder="Posicion 2" min=0 max=50000 id="pos2">
+          <input type="number" placeholder="Posicion 3" min=0 max=50000 id="pos3"><br>
+          <input type="number" placeholder="Velocidad 1" min=0 id="vel1">
+          <input type="number" placeholder="Velocidad 2" min=0 id="vel2">
+          <input type="number" placeholder="Velocidad 3" min=0 id="vel3">
+          <input type="submit" value="OK" id="pos_vel_bt">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col33">
+    <button type="button" name="auto" id="auto">Auto/Manual</button><br>
+    <button type="button" name="marcha" id="marcha">Marcha</button>
+    <button type="button" name="origen" id="origen">Origen</button><br>
+    <button type="button" name="rearme" id="rearme">Rearme</button>
+    <button type="button" name="stop" id="stop">Stop</button>
+  </div>
 </div>
 <div class="row">
-    <div class="col66">
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button>
+  <div class="info">
+    <div class="lectura">
+      <p>Posicion actual: <span id="cur_pos"></span></p>
+      <p>Posicion destino: <span id="tar_pos"></span></p>
     </div>
-    <div class="col33">
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button><br>
-        <button>a</button>
-    </div>
+  </div>
 </div>
 
+<script type="text/javascript" src="js/botones.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
