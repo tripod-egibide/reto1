@@ -1,6 +1,6 @@
 ////carga de datos
 // TODO: probar este bloque
-let targetPosition, currentPosition, alarma1, auto;
+let targetPosition, currentPosition, alarm1, auto;
 
 $(document).ready(function() {
   $.ajaxSetup({
@@ -20,11 +20,11 @@ $(document).ready(function() {
       auto = result.toString()
       // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
     });
-    $.get("htm/alarma1.htm", function(result) {
-      alarma1 = result.toString()
-      if (alarma1 != 0) {
+    $.get("htm/alarm1.htm", function(result) {
+      alarm1 = result.toString()
+      if (alarm1 != 0) {
         // TODO: mejorar esto, no permitir continuar hasta resolver el problema
-        alert("Alarma: " + alarma1 +
+        alert("Alarma: " + alarm1 +
           "\nPor favor solucione el problema y pulse el boton de rearme.")
       }
     });
