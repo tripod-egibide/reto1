@@ -18,6 +18,7 @@ body{
     margin: 0;
     background-color: #dcdcdd;
     color: #46494c;
+    text-align: center;
 }
 #contenido{
     max-width: 100%;
@@ -37,7 +38,7 @@ body{
     width: 100%;
     background-color: #dcdcdd;
     text-align: center;
-    padding-top: 10%;
+    /*padding-top: 10%;*/
 }
 .col66{
     float: left;
@@ -188,6 +189,16 @@ input {
     animation-direction: alternate;
     animation-timing-function: ease-in-out;
     animation-fill-mode: both;
+}
+.alarma{
+    position: fixed;
+    top: 0;
+    width: 50%;
+    margin-left: 25%;
+    background-color: red;
+    color: white;
+    border-radius: 4px;
+    /*opacity: 0.8;*/
 }
 
 /* Animaciones */

@@ -19,13 +19,13 @@ $(document).ready(function() {
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString()
       // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
-      /*if (auto == 0){
+      if (auto == 0){
           document.getElementById("a").display = "none";
           document.getElementById("m").display = "block";
       }else {
           document.getElementById("a").display = "block";
           document.getElementById("m").display = "none";
-      }*/
+      }
     });
     $.get("htm/alarm1.htm", function(result) {
       alarm1 = result.toString()
@@ -33,6 +33,8 @@ $(document).ready(function() {
         // TODO: mejorar esto, no permitir continuar hasta resolver el problema
         // alert("Alarma: " + alarm1 +
         //   "\nPor favor solucione el problema y pulse el boton de rearme.")
+        document.getElementsByClassName("alarma")[0].innerHTML = "Alarma: " + alarm1 +
+            "\nPor favor solucione el problema y pulse el boton de rearme."
       }
     });
 
