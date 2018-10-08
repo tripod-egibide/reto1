@@ -1,34 +1,64 @@
-////carga de datos
-// TODO: probar este bloque
+//variables de lectura
 let targetPosition, currentPosition, alarm1, auto;
+//variables calculadas
+let posPorcentage, contadorCiclos = 0,
+  ultimaAlarmaTiempo = null,
+  ultimaAlarmaCodigo = null,
+  registroAlarmas = [],
+  contadorTiempo = 0;
 
+////carga de datos
 $(document).ready(function() {
   $.ajaxSetup({
     cache: false
   });
   setInterval(function() {
     $.get("htm/TargetPosition.htm", function(result) {
-      targetPosition = result.toString()
-      $("#tar_pos").text(targetPosition)
+      targetPosition = result.toString();
+      $("#tar_pos").text(targetPosition);
     });
+
     $.get("htm/CurrentPosition.htm", function(result) {
-      currentPosition = result.toString()
-      $("#cur_pos").text(currentPosition)
-      // TODO: llamar a las funciones de la animacion dependiendo de la posicion del aparato
-    });
-    $.get("htm/MAUTO.htm", function(result) {
-      auto = result.toString()
-      // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
-    });
-    $.get("htm/alarm1.htm", function(result) {
-      alarm1 = result.toString()
-      if (alarm1 != 0) {
-        // TODO: mejorar esto, no permitir continuar hasta resolver el problema
-        alert("Alarma: " + alarm1 +
-          "\nPor favor solucione el problema y pulse el boton de rearme.")
+      currentPosition = result.toString();
+      $("#cur_pos").text(currentPosition);
+      posPorcentage = (parseInt(currentPosition) / 50000 * 100).toFixed(2);
+      if (currentPosition >= 49900) {
+        contadorCiclos++;
       }
     });
 
+    $.get("htm/MAUTO.htm", function(result) {
+      auto = result.toString();
+      // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
+    });
+
+    $.get("htm/alarm1.htm", function(result) {
+      alarm1 = result.toString();
+      if (alarm1 != 0) {
+        alert("Alarma: " + alarm1 +
+          "\nPor favor solucione el problema y pulse el boton de rearme.");
+        ultimaAlarmaTiempo = Date.now();
+        ultimaAlarmaCodigo = alarm1;
+        // TODO: ventanita de alarma
+      } else if (ultimaAlarmaTiempo != null) {
+        registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
+      }
+    });
+
+    contadorTiempo++;
+
+    localStorage.contadorTiempo = contadorTiempo;
+    localStorage.contadorCiclos = contadorCiclos;
+    localStorage.registroAlarmas = registroAlarmas;
+    // TODO: reemplazar el temporal por un booleano real y añadir lo de las alarmas
+    if (booleanoHistoricoTEMPORALTEMPORALTEMPORALTEMPORALTEMPORAAAAAAAAAAAAAAAAAAAAAL) {
+      $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
+      $("#cis_ses").text(contadorCiclos);
+    } else {
+      $("#tie_eje").text(new Date(localStorage.contadorTiempo * 100)
+        .toISOString().substr(11, 8));
+      $("#cis_ses").text(localStorage.contadorCiclos);
+    }
   }, 100);
 });
 
@@ -47,17 +77,6 @@ function cambiarValor(variable, valor) {
   }));
 }
 
-function click(elemento, funcion) {
-  //como no podemos usar $(#elemento).click(), usamos esto
-  document.getElementById(elemento).onclick = funcion
-}
-
-function leerElemento(elemento) {
-  //como no podemos usar $(#elemento).val(), usamos esto
-  //aprovecho esta oportunidad para expresar mi descontento con estas absurdas limitaciones
-  return document.getElementById(elemento).value;
-}
-
 function leerVariable(variable) {
   $.get('"webdata".' + variable, function(result) {
     return result
@@ -69,10 +88,8 @@ function habilitarElemento(elemento, booleano) {
   document.getElementById(elemento).disabled = !booleano;
 }
 
-////animacion
-//puede que aquí no entre nada, ya veremos
-
-click("auto", () => {
+////funcionamiento de botones especiales
+function auto() {
   if (auto == 1) {
     cambiarValor("MAUTO", false)
     auto = false;
@@ -80,4 +97,4 @@ click("auto", () => {
     cambiarValor("MAUTO", true)
     auto = true;
   }
-});
+}
