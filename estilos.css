@@ -24,7 +24,7 @@ body{
     margin: auto;
 }
 .row{
-    width: 60%;
+    width: 80%;
     margin: auto;
 }
 .row:after{
@@ -34,13 +34,16 @@ body{
 }
 .col33{
     float: left;
-    width: 33%;
+    width: 100%;
     background-color: #dcdcdd;
+    text-align: center;
+    padding-top: 10%;
 }
 .col66{
     float: left;
-    width: 67%;
+    width: 100%;
     background-color: #dcdcdd;
+    text-align: center;
 }
 header {
     padding: 10px;
@@ -67,6 +70,7 @@ nav {
     top: 0;
 }
 nav a {
+    width: 100%;
     float: left;
     display: block;
     color: #1985a1;
@@ -89,6 +93,7 @@ button{
     background-color: transparent;
     color: white;
     border: 1px solid white;
+    border-radius: 4px;
 }
 .modal {
     display: none;
@@ -129,6 +134,19 @@ button{
     text-decoration: none;
     cursor: pointer;
 }
+input {
+    width: 100%;
+}
+.sensor {
+    width: 32%;
+}
+.col33 button{
+    width: 49%;
+    margin-bottom: 0.1em;
+}
+.auto{
+    /*display: none;*/
+}
 
 /*PRUEBAS*/
 .col100{
@@ -142,11 +160,11 @@ button{
     text-align: center;
     border: 1px solid black;
 }
-i.b{
+.b{
     padding-left: 15%;
     position: absolute;
 }
-i.a{
+.a{
 
     color: red;
     animation-name: example;
@@ -162,7 +180,7 @@ i.a{
 
     /*animation-play-state: paused;*/
 }
-i.c{
+.c{
     color: red;
     animation-name: example;
     animation-duration: 4s;
