@@ -9,11 +9,11 @@ $(document).ready(function() {
   setInterval(function() {
     $.get("htm/TargetPosition.htm", function(result) {
       targetPosition = result.toString()
-      $("#tar_pos").text(targetPosition)
+      $("#tar_pos").text(result)
     });
     $.get("htm/CurrentPosition.htm", function(result) {
       currentPosition = result.toString()
-      $("#cur_pos").text(currentPosition)
+      $("#cur_pos").text(result)
       // TODO: llamar a las funciones de la animacion dependiendo de la posicion del aparato
     });
     $.get("htm/MAUTO.htm", function(result) {
@@ -96,7 +96,7 @@ function habilitarElemento(elemento, booleano) {
 
 ////col33
 click("auto", () => {
-  if (auto == "true" || auto == "1") {
+  if (auto == 1) {
     cambiarValor("MAUTO", false)
     auto = false;
   } else {
