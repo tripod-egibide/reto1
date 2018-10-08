@@ -72,29 +72,6 @@ function habilitarElemento(elemento, booleano) {
 ////animacion
 //puede que aquí no entre nada, ya veremos
 
-////auto
-// click("fc1", boton("FC1"));
-// click("fc2", boton("FC2"));
-// click("fc3", boton("FC3"));
-// click("pos_vel_bt", () => {
-//   cambiarValor("pos1", leerElemento("pos1"))
-//   cambiarValor("vel1", leerElemento("vel1"))
-//   cambiarValor("pos2", leerElemento("pos2"))
-//   cambiarValor("vel2", leerElemento("vel2"))
-//   cambiarValor("pos3", leerElemento("pos3"))
-//   cambiarValor("vel3", leerElemento("vel3"))
-// });
-
-////manual
-//estas tres luego estarán asociadas a la animacion, pero se quedan aqui por ahora
-// click("posicion1", boton("POSICION1"));
-// click("posicion2", boton("POSICION2"));
-// click("posicion3", boton("POSICION3"));
-//
-// click("slt_pos_bt", cambiarValor("POSICION", leerElemento("slt_pos_in")));
-// click("vel_bt", cambiarValor("POSICION", leerElemento("vel_in")));
-
-////col33
 click("auto", () => {
   if (auto == 1) {
     cambiarValor("MAUTO", false)
@@ -104,7 +81,3 @@ click("auto", () => {
     auto = true;
   }
 });
-// click("marcha", boton("MARCHA"));
-// click("origen", boton("InicioOrigen"));
-// click("rearme", boton("REARME"));
-// click("stop", boton("STOP"));
