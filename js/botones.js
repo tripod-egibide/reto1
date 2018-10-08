@@ -9,11 +9,11 @@ $(document).ready(function() {
   setInterval(function() {
     $.get("htm/TargetPosition.htm", function(result) {
       targetPosition = result.toString()
-      $("#tar_pos").text(result)
+      $("#tar_pos").text(targetPosition)
     });
     $.get("htm/CurrentPosition.htm", function(result) {
       currentPosition = result.toString()
-      $("#cur_pos").text(result)
+      $("#cur_pos").text(currentPosition)
       // TODO: llamar a las funciones de la animacion dependiendo de la posicion del aparato
     });
     $.get("htm/MAUTO.htm", function(result) {
