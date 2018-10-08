@@ -13,7 +13,7 @@ $(document).ready(function() {
     });
     $.get("htm/CurrentPosition.htm", function(result) {
       currentPosition = result.toString()
-      $("#cur_pos").text(targetPosition)
+      $("#cur_pos").text(currentPosition)
       // TODO: llamar a las funciones de la animacion dependiendo de la posicion del aparato
     });
     $.get("htm/MAUTO.htm", function(result) {
