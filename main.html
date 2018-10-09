@@ -38,9 +38,9 @@
         </form>
       </div>
       <div class="auto">
-        <button type="button" name="Sensor 1" id="fc1"  class="sensor" onclick="boton('FC1')">FC1</button>
-        <button type="button" name="Sensor 2" id="fc2"  class="sensor" onclick="boton('FC2')">FC2</button>
-        <button type="button" name="Sensor 3" id="fc3"  class="sensor" onclick="boton('FC3')">FC3</button><br>
+        <button type="button" name="Sensor 1" id="fc1" class="sensor" onclick="boton('FC1')">FC1</button>
+        <button type="button" name="Sensor 2" id="fc2" class="sensor" onclick="boton('FC2')">FC2</button>
+        <button type="button" name="Sensor 3" id="fc3" class="sensor" onclick="boton('FC3')">FC3</button><br>
         <form method="post">
           <input type="number" placeholder="Posicion 1" name='"webdata".pos1' type="text" min=0 max=50000 id="pos1">
           <input type="number" placeholder="Posicion 2" name='"webdata".pos2' type="text" min=0 max=50000 id="pos2">
@@ -59,7 +59,7 @@
     <button type="button" name="origen" id="origen" onclick="boton('InicioOrigen')">Origen</button><br>
     <button type="button" name="rearme" id="rearme" onclick="boton('REARME')">Rearme</button>
     <button type="button" name="stop" id="stop" onclick="boton('STOP')">Stop</button>
-      <button type="button" id="jogm_movil" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
+    <button type="button" id="jogm_movil" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
     <button type="button" id="jogp_movil" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)">Jog+</button><br>
   </div>
 </div>
@@ -68,8 +68,9 @@
     Posicion actual: <span id="cur_pos"></span>
     Posicion destino: <span id="tar_pos"></span><br>
     <div class="sesion_historico">
-      Tiempo de ejecuci�n: <span id="tie_eje"></span>
-      Ciclos completos en �sta sesion: <span id="cic_ses"></span><br>
+      <button type="button" onclick=sesionHistorico() id="ses_his">Ver Historico</button>
+      Tiempo de ejecucion: <span id="tie_eje"></span>
+      Ciclos completos en esta sesion: <span id="cic_ses"></span><br>
     </div>
   </div>
 </div>
