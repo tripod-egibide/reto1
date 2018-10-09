@@ -38,13 +38,13 @@ $(document).ready(function() {
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString();
       //habilitamos y deshabilitamos parte de la interfaz
-      if (auto == false) {
-        document.getElementsByClassName("auto")[0].style.display = "none";
-        document.getElementsByClassName("manual")[0].style.display = "block";
-      } else {
-        document.getElementsByClassName("auto")[0].style.display = "block";
-        document.getElementsByClassName("manual")[0].style.display = "none";
-      }
+      // if (auto == false) {
+      //   document.getElementsByClassName("auto")[0].style.display = "none";
+      //   document.getElementsByClassName("manual")[0].style.display = "block";
+      // } else {
+      //   document.getElementsByClassName("auto")[0].style.display = "block";
+      //   document.getElementsByClassName("manual")[0].style.display = "none";
+      // }
     });
 
     //controla las posibles alarmas
@@ -55,8 +55,8 @@ $(document).ready(function() {
       if (alarm1 != 0) {
         ultimaAlarmaTiempo = Date.now();
         ultimaAlarmaCodigo = alarm1;
-        $(".alarma").html("<i class='material-icons'>warning</i><br>Alarma: " + alarm1 +
-          "\nPor favor solucione el problema y pulse el boton de rearme.")
+        // $(".alarma").html("<i class='material-icons'>warning</i><br>Alarma: " + alarm1 +
+        //   "\nPor favor solucione el problema y pulse el boton de rearme.")
       } else if (ultimaAlarmaTiempo != null) {
         registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
         $(".alarma").html("")

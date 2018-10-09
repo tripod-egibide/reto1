@@ -28,12 +28,13 @@ function fase23() {
         document.getElementById('goAnimacion').style.animationPlayState="running";
     }
     document.getElementById('goAnimacion').style.WebkitAnimationName = "fase23";
+    document.getElementById('goAnimacion').classList.add('a');
 }
 function fase31() {
     document.getElementById('goAnimacion').classList.remove('c');
     if (document.getElementById('goAnimacion').style.animationPlayState === "paused"){
         document.getElementById('goAnimacion').style.animationPlayState="running";
     }
-    document.getElementById('goAnimacion').classList.add('a');
     document.getElementById('goAnimacion').style.WebkitAnimationName = "fase31";
+    document.getElementById('goAnimacion').classList.add('a');
 }

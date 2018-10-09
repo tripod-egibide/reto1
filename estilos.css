@@ -1,12 +1,12 @@
 /*user-select: all;*/
-    :root{
-        --main-color: hotpink;
-        --pane-padding: 5px 42px;
-    }
-    #div1 {
-    background-color: var(--main-color);
-    padding: var(--pane-padding);
-    }
+:root{
+    --main-color: hotpink;
+    --pane-padding: 5px 42px;
+}
+#div1 {
+background-color: var(--main-color);
+padding: var(--pane-padding);
+}
 /*
 document.getElementById("elemento").style.setProperty(--main-color, "blue")
 */
@@ -16,13 +16,21 @@ document.getElementById("elemento").style.setProperty(--main-color, "blue")
 body{
     font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
     margin: 0;
-    background-color: #dcdcdd;
+    height: 100%;
     color: #46494c;
     text-align: center;
 }
 #contenido{
-    max-width: 100%;
+    background-color: #dcdcdd;
+    max-width: 90%;
     margin: auto;
+    height: 100%;
+    padding: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-left: 2px solid #666;
+    border-right: 2px solid #666;
+    border-radius: 10px;
 }
 .row{
     width: 80%;
@@ -52,17 +60,19 @@ header {
     color: #dcdcdd;
 }
 footer {
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    width: 100%;
     padding: 10px;
     text-align: center;
     color: #dcdcdd;
 }
 #pie{
-    width: 90%;
     margin: auto;
     background-color: #4c5c68;
 }
 nav {
-    width: 90%;
+    width: 100%;
     margin: auto;
     overflow: hidden;
     background-color: #4c5c68;
@@ -72,9 +82,8 @@ nav a {
     float: left;
     display: block;
     color: #1985a1;
-    text-align: center;
     padding: 14px 20px;
-    text-decoration: none;
+    font-size: 0;
 }
 nav a.right {
     float: right;
@@ -87,10 +96,34 @@ nav a.active {
     background-color: #666;
     color: #1985a1;
 }
-button{
-    background-color: transparent;
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+hr{
+    position: relative;
+    top: 20px;
+    color: black;
+    border: 1px solid black;
+    width: 66%;
+}
+button, input[type=submit], input[type=number]{
+    background-color: #666;
     color: white;
     border: 1px solid white;
+    border-radius: 4px;
+    padding: 5px;
+}
+/*button:focus, button:active{*/
+    /*background-color: transparent;*/
+    /*color: #666;*/
+    /*border: 1px solid #666;*/
+    /*border-radius: 4px;*/
+/*}*/
+button:hover{
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #666;
     border-radius: 4px;
 }
 .modal {
@@ -133,10 +166,11 @@ button{
     cursor: pointer;
 }
 input {
-    width: 100%;
+    width: 25%;
+    height: 50%;
 }
 .sensor {
-    width: 32%;
+    width: 16%;
 }
 .col33 button{
     width: 49%;
@@ -154,17 +188,16 @@ input {
     float: left;
     width: 33.3%;
     text-align: center;
-    border: 1px solid black;
 }
 .b{
-    padding-left: 12%;
+    padding-left: 10.1%;
     position: absolute;
 }
 .a{
 
     color: red;
     animation-name: example;
-    animation-duration: 4s;
+    animation-duration: 2s;
     /*animation-iteration-count: infinite;*/
     /*animation-direction: alternate;*/
     /*animation-timing-function: linear;*/
@@ -193,11 +226,24 @@ input {
     background-color: red;
     color: white;
     border-radius: 4px;
+    z-index: 9;
     /*opacity: 0.8;*/
 }
-
-.alarma{
-    z-index: 9;
+#jogm, #jogp{
+    width: 25%;
+}
+#jogm_movil, #jogp_movil{
+    display: none;
+}
+.lectura{
+    margin-top: 5%;
+}
+.animacion{
+    margin-bottom: 5%;
+    height: 1%;
+}
+.marcador{
+    transform: rotate(90deg);
 }
 
 /* Animaciones */
@@ -211,22 +257,22 @@ input {
 }
 
 @keyframes example {
-    0%  {color:red; padding-left: 12%;}
-    50%  {color:green; padding-left: 38.5%;}
-    100% {color:blue; padding-left: 65%;}
+    0%  {color:red; padding-left: 10.1%;}
+    50%  {color:green; padding-left: 34.2%;}
+    100% {color:blue; padding-left: 58%;}
 }
 
 @keyframes fase12 {
-    0%  {color:red; padding-left: 12%;}
-    100%  {color:green; padding-left: 38.5%;}
+    0%  {color:red; padding-left: 10.1%;}
+    100%  {color:green; padding-left: 34.2%;}
 }
 @keyframes fase23 {
-    0%  {color:red; padding-left: 38.5%;}
-    100% {color:blue; padding-left: 65%;}
+    0%  {color:red; padding-left: 34.2%;}
+    100% {color:blue; padding-left: 58%;}
 }
 @keyframes fase31 {
-    0%  {color:red; padding-left: 65%;}
-    100% {color:blue; padding-left: 12%;}
+    0%  {color:red; padding-left: 58%;}
+    100% {color:blue; padding-left: 10.1%;}
 }
 
 /* Responsividad */
@@ -244,6 +290,11 @@ input {
     }
     nav a {
         width: 50%;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    #jogm_movil, #jogp_movil{
+        display: inline-block;
     }
 }
 /* Pantalla */
@@ -256,5 +307,10 @@ input {
     }
     nav a {
         width: Auto;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    #jogm_movil, #jogp_movil{
+        display: inline-block;
     }
 }
