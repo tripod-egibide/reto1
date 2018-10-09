@@ -5,7 +5,8 @@ let posPorcentage, contadorCiclos = 0,
   ultimaAlarmaTiempo = null,
   ultimaAlarmaCodigo = null,
   registroAlarmas = [],
-  contadorTiempo = 0;
+  contadorTiempo = 0,
+  historico = false;
 
 
 
@@ -46,7 +47,7 @@ $(document).ready(function() {
       }
     });
 
-
+    //controla las posibles alarmas
     $.get("htm/alarm1.htm", function(result) {
       alarm1 = result.toString();
       //si no hay ningun error, la variable es zero
@@ -69,9 +70,8 @@ $(document).ready(function() {
     localStorage.contadorCiclos = contadorCiclos;
     localStorage.registroAlarmas = registroAlarmas;
 
-    // TODO: reemplazar el temporal por un booleano real y a�adir lo de las alarmas
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
-    if (true) {
+    if (historico) {
       $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
       $("#cis_ses").text(contadorCiclos);
     } else {
@@ -84,6 +84,7 @@ $(document).ready(function() {
 
 
 ////funciones universales
+
 function boton(variable) {
   //funcionalidad de botones normales, enciende y luego apaga
   cambiarValor(variable, true);
@@ -105,7 +106,6 @@ function leerVariable(variable) {
   })
 }
 
-////funcionamiento de botones especiales
 function autoManual() {
   //actua como interruptor, activando o desactivando el booleano intermitentemente
   //no cambiamos la variable auto aqui para evitar problemas, de todos modos se actualiza diez veces por segundo
@@ -114,4 +114,15 @@ function autoManual() {
   } else {
     cambiarValor("MAUTO", true)
   }
+}
+
+function sesionHistorico() {
+  //no creo que esto requiera explicacion
+  historico = !historico
+  if (historico) {
+    $("#ses_his").text("Ver Sesion");
+  } else {
+    $("#ses_his").text("Ver Historico");
+  }
+
 }
