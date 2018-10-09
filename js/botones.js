@@ -33,18 +33,20 @@ $(document).ready(function() {
       }
     });
 
-    //controla la variable de alarma
+    //controla la variable de auto
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString();
+      //habilitamos y deshabilitamos parte de la interfaz
+      if (auto == false) {
+        document.getElementsByClassName("auto")[0].display = "none";
+        document.getElementsByClassName("manual")[0].display = "block";
+      } else {
+        document.getElementsByClassName("auto")[0].display = "block";
+        document.getElementsByClassName("manual")[0].display = "none";
+      }
     });
-    if (auto == 0) {
-      document.getElementsByClassName("auto").display = "none";
-      document.getElementsByClassName("manual").display = "block";
-    } else {
-      document.getElementsByClassName("auto").display = "block";
-      document.getElementsByClassName("manual").display = "none";
-    }
   });
+
 
   $.get("htm/alarm1.htm", function(result) {
     alarm1 = result.toString();
@@ -53,11 +55,11 @@ $(document).ready(function() {
     if (alarm1 != 0) {
       ultimaAlarmaTiempo = Date.now();
       ultimaAlarmaCodigo = alarm1;
-      document.getElementsByClassName("alarma")[0].innerHTML = "Alarma: " + alarm1 +
-        "\nPor favor solucione el problema y pulse el boton de rearme."
+      $(".alarma").html("Alarma: " + alarm1 +
+        "\nPor favor solucione el problema y pulse el boton de rearme.")
     } else if (ultimaAlarmaTiempo != null) {
       registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
-      document.getElementsByClassName("alarma")[0].innerHTML = ""
+      $(".alarma").html("")
     }
   });
 
