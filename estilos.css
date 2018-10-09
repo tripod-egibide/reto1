@@ -14,7 +14,7 @@ document.getElementById("elemento").style.setProperty(--main-color, "blue")
     box-sizing: border-box;
 }
 body{
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
     margin: 0;
     background-color: #dcdcdd;
     color: #46494c;
@@ -162,7 +162,7 @@ input {
     border: 1px solid black;
 }
 .b{
-    padding-left: 15%;
+    padding-left: 12%;
     position: absolute;
 }
 .a{
@@ -212,22 +212,22 @@ input {
 }
 
 @keyframes example {
-    0%  {color:red; padding-left: 15%;}
-    50%  {color:green; padding-left: 49%;}
-    100% {color:blue; padding-left: 83%;}
+    0%  {color:red; padding-left: 12%;}
+    50%  {color:green; padding-left: 38.5%;}
+    100% {color:blue; padding-left: 65%;}
 }
 
 @keyframes fase12 {
-    0%  {color:red; padding-left: 15%;}
-    100%  {color:green; padding-left: 49%;}
+    0%  {color:red; padding-left: 12%;}
+    100%  {color:green; padding-left: 38.5%;}
 }
 @keyframes fase23 {
-    0%  {color:red; padding-left: 49%;}
-    100% {color:blue; padding-left: 83%;}
+    0%  {color:red; padding-left: 38.5%;}
+    100% {color:blue; padding-left: 65%;}
 }
 @keyframes fase31 {
-    0%  {color:red; padding-left: 83%;}
-    100% {color:blue; padding-left: 15%;}
+    0%  {color:red; padding-left: 65%;}
+    100% {color:blue; padding-left: 12%;}
 }
 
 /* Responsividad */

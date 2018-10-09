@@ -8,6 +8,10 @@ function go() {
     document.getElementById('goAnimacion').classList.add('c');
 }
 function stop() {
+    document.getElementById('goAnimacion').classList.remove('a');
+    document.getElementById('goAnimacion').classList.remove('c');
+}
+function pause() {
     document.getElementById('goAnimacion').style.animationPlayState="paused";
 }
 function fase12() {
