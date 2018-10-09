@@ -66,9 +66,9 @@ $(document).ready(function() {
 
     contadorTiempo++;
 
-    localStorage.contadorTiempo = contadorTiempo;
-    localStorage.contadorCiclos = contadorCiclos;
-    localStorage.registroAlarmas = registroAlarmas;
+    localStorage.contadorTiempo += contadorTiempo;
+    localStorage.contadorCiclos += contadorCiclos;
+    registroAlarmas.forEach(e => localStorage.registroAlarmas.push(e));
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
     if (historico) {
