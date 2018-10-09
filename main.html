@@ -37,7 +37,7 @@
           <input type="submit" value="OK" id="vel_bt">
         </form>
       </div>
-      <div class="auto" id="a">
+      <div class="auto">
         <button type="button" name="Sensor 1" id="fc1"  class="sensor" onclick="boton('FC1')">FC1</button>
         <button type="button" name="Sensor 2" id="fc2"  class="sensor" onclick="boton('FC2')">FC2</button>
         <button type="button" name="Sensor 3" id="fc3"  class="sensor" onclick="boton('FC3')">FC3</button><br>
@@ -54,12 +54,12 @@
     </div>
   </div>
   <div class="col33">
-    <button type="button" name="auto" id="auto" onclick="auto()">Auto/Manual</button><br>
+    <button type="button" name="auto" id="auto" onclick="autoManual()">Auto/Manual</button><br>
     <button type="button" name="marcha" id="marcha" onclick="boton('MARCHA')">Marcha</button>
     <button type="button" name="origen" id="origen" onclick="boton('InicioOrigen')">Origen</button><br>
     <button type="button" name="rearme" id="rearme" onclick="boton('REARME')">Rearme</button>
     <button type="button" name="stop" id="stop" onclick="boton('STOP')">Stop</button>
-    <button type="button" id="jogm_movil" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
+      <button type="button" id="jogm_movil" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
     <button type="button" id="jogp_movil" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)">Jog+</button><br>
   </div>
 </div>
