@@ -35,52 +35,52 @@ $(document).ready(function() {
 
     //controla la variable de auto
     $.get("htm/MAUTO.htm", function(result) {
-      auto = result.toString();
+      //auto = result.toString();
       //habilitamos y deshabilitamos parte de la interfaz
-      // if (auto == false) {
-      //   document.getElementsByClassName("auto")[0].display = "none";
-      //   document.getElementsByClassName("manual")[0].display = "block";
-      // } else {
-      //   document.getElementsByClassName("auto")[0].display = "block";
-      //   document.getElementsByClassName("manual")[0].display = "none";
-      // }
+      if (auto == false) {
+        document.getElementsByClassName("auto")[0].display = "none";
+        document.getElementsByClassName("manual")[0].display = "block";
+      } else {
+        document.getElementsByClassName("auto")[0].display = "block";
+        document.getElementsByClassName("manual")[0].display = "none";
+      }
     });
-  });
 
 
-  $.get("htm/alarm1.htm", function(result) {
-    alarm1 = result.toString();
-    //si no hay ningun error, la variable es zero
-    //asi que tenemos que controlar otros valores
-    if (alarm1 != 0) {
-      ultimaAlarmaTiempo = Date.now();
-      ultimaAlarmaCodigo = alarm1;
-      //   $(".alarma").html("Alarma: " + alarm1 +
-      //     "\nPor favor solucione el problema y pulse el boton de rearme.")
-      // } else if (ultimaAlarmaTiempo != null) {
-      //   registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
-      //   $(".alarma").html("")
+    $.get("htm/alarm1.htm", function(result) {
+      alarm1 = result.toString();
+      //si no hay ningun error, la variable es zero
+      //asi que tenemos que controlar otros valores
+      if (alarm1 != 0) {
+        ultimaAlarmaTiempo = Date.now();
+        ultimaAlarmaCodigo = alarm1;
+        $(".alarma").html("Alarma: " + alarm1 +
+          "\nPor favor solucione el problema y pulse el boton de rearme.")
+      } else if (ultimaAlarmaTiempo != null) {
+        registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
+        $(".alarma").html("")
+      }
+    });
+
+
+    contadorTiempo++;
+
+    localStorage.contadorTiempo = contadorTiempo;
+    localStorage.contadorCiclos = contadorCiclos;
+    localStorage.registroAlarmas = registroAlarmas;
+
+    // TODO: reemplazar el temporal por un booleano real y a�adir lo de las alarmas
+    // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
+    if (true) {
+      $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
+      $("#cis_ses").text(contadorCiclos);
+    } else {
+      $("#tie_eje").text(new Date(localStorage.contadorTiempo * 100)
+        .toISOString().substr(11, 8));
+      $("#cis_ses").text(localStorage.contadorCiclos);
     }
-  });
-
-  contadorTiempo++;
-
-  localStorage.contadorTiempo = contadorTiempo;
-  localStorage.contadorCiclos = contadorCiclos;
-  localStorage.registroAlarmas = registroAlarmas;
-
-  // TODO: reemplazar el temporal por un booleano real y a�adir lo de las alarmas
-  //mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
-  // if (true) {
-  //   $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
-  //   $("#cis_ses").text(contadorCiclos);
-  // } else {
-  //   $("#tie_eje").text(new Date(localStorage.contadorTiempo * 100)
-  //     .toISOString().substr(11, 8));
-  //   $("#cis_ses").text(localStorage.contadorCiclos);
-  // }
-}, 100);
-
+  }, 100);
+});
 
 
 ////funciones universales
