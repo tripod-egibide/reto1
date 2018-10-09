@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     //controla la variable de auto
     $.get("htm/MAUTO.htm", function(result) {
-      //auto = result.toString();
+      auto = result.toString();
       //habilitamos y deshabilitamos parte de la interfaz
       if (auto == false) {
         document.getElementsByClassName("auto")[0].display = "none";
