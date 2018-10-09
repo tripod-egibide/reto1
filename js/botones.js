@@ -4,9 +4,9 @@ let targetPosition, currentPosition, alarm1, auto;
 let posPorcentage, contadorCiclos = 0,
   ultimaAlarmaTiempo = null,
   ultimaAlarmaCodigo = null,
-  registroAlarmas = [],
   contadorTiempo = 0,
   historico = false;
+let final = false;
 
 
 
@@ -30,7 +30,12 @@ $(document).ready(function() {
       posPorcentage = (parseInt(currentPosition) / 50000 * 100).toFixed(2);
       //cada vez que llega al final, aumentamos el contador
       if (currentPosition >= 49900) {
-        contadorCiclos++;
+        if (!final) {
+          contadorCiclos++;
+          final = true;
+        }
+      } else {
+        final = false;
       }
     });
 
@@ -58,24 +63,22 @@ $(document).ready(function() {
         $(".alarma").html("Alarma: " + alarm1 +
           "\nPor favor solucione el problema y pulse el boton de rearme.")
       } else if (ultimaAlarmaTiempo != null) {
-        registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
         $(".alarma").html("")
       }
     });
 
-
+    //sumamos a este contador, que lleva las decimas de segundo
     contadorTiempo++;
 
-    localStorage.contadorTiempo = contadorTiempo;
-    localStorage.contadorCiclos = contadorCiclos;
-    localStorage.registroAlarmas = registroAlarmas;
+    localStorage.setItem("contadorTiempo", contadorTiempo += parseInt(localStorage.getItem("contadorTiempo")));
+    localStorage.setItem("contadorCiclos", contadorCiclos += parseInt(localStorage.getItem("contadorCiclos")));
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
-    if (historico) {
+    if (!historico) {
       $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
-      $("#cis_ses").text(contadorCiclos);
+      $("#cis_ses").text(contadorCiclos.toString());
     } else {
-      $("#tie_eje").text(new Date(localStorage.contadorTiempo * 100)
+      $("#tie_eje").text(new Date(localStorage.getItem("contadorTiempo") * 100)
         .toISOString().substr(11, 8));
       $("#cis_ses").text(localStorage.contadorCiclos);
     }
