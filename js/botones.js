@@ -38,11 +38,11 @@ $(document).ready(function() {
       auto = result.toString();
       //habilitamos y deshabilitamos parte de la interfaz
       if (auto == false) {
-        document.getElementsByClassName("auto")[0].display = "none";
-        document.getElementsByClassName("manual")[0].display = "block";
+        document.getElementsByClassName("auto")[0].style.display = "none";
+        document.getElementsByClassName("manual")[0].style.display = "block";
       } else {
-        document.getElementsByClassName("auto")[0].display = "block";
-        document.getElementsByClassName("manual")[0].display = "none";
+        document.getElementsByClassName("auto")[0].style.display = "block";
+        document.getElementsByClassName("manual")[0].style.display = "none";
       }
     });
 
