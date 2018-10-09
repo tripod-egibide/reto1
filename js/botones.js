@@ -29,19 +29,24 @@ $(document).ready(function() {
 
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString();
-      // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
-    });
+      if (auto == 0){
+          document.getElementById("a").display = "none";
+          document.getElementById("m").display = "block";
+      }else {
+          document.getElementById("a").display = "block";
+          document.getElementById("m").display = "none";
+      }    });
 
     $.get("htm/alarm1.htm", function(result) {
       alarm1 = result.toString();
       if (alarm1 != 0) {
-        alert("Alarma: " + alarm1 +
-          "\nPor favor solucione el problema y pulse el boton de rearme.");
         ultimaAlarmaTiempo = Date.now();
         ultimaAlarmaCodigo = alarm1;
-        // TODO: ventanita de alarma
+        document.getElementsByClassName("alarma")[0].innerHTML = "Alarma: " + alarm1 +
+            "\nPor favor solucione el problema y pulse el boton de rearme."
       } else if (ultimaAlarmaTiempo != null) {
         registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
+        document.getElementsByClassName("alarma")[0].innerHTML = ""
       }
     });
 
@@ -50,7 +55,7 @@ $(document).ready(function() {
     localStorage.contadorTiempo = contadorTiempo;
     localStorage.contadorCiclos = contadorCiclos;
     localStorage.registroAlarmas = registroAlarmas;
-    // TODO: reemplazar el temporal por un booleano real y añadir lo de las alarmas
+    // TODO: reemplazar el temporal por un booleano real y aï¿½adir lo de las alarmas
     if (booleanoHistoricoTEMPORALTEMPORALTEMPORALTEMPORALTEMPORAAAAAAAAAAAAAAAAAAAAAL) {
       $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
       $("#cis_ses").text(contadorCiclos);
@@ -87,6 +92,7 @@ function habilitarElemento(elemento, booleano) {
   //habilita o deshabilita un elemento dependiendo del valor del booleano
   document.getElementById(elemento).disabled = !booleano;
 }
+
 
 ////funcionamiento de botones especiales
 function auto() {
