@@ -69,7 +69,7 @@ $(document).ready(function() {
 
   // TODO: reemplazar el temporal por un booleano real y a�adir lo de las alarmas
   //mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
-  if (booleanoHistoricoTEMPORALTEMPORALTEMPORALTEMPORALTEMPORAAAAAAAAAAAAAAAAAAAAAL) {
+  if (true) {
     $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
     $("#cis_ses").text(contadorCiclos);
   } else {
