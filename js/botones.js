@@ -10,8 +10,8 @@ let posPorcentage, contadorCiclos = 0,
   fechaInicio = new Date();
 //inicializacion de variables almacenadas
 if (!localStorage.getItem("contadorTiempo")) {
-  localStorage.setItem("contadorCiclos", 0);
-  localStorage.setItem("contadorTiempo", 0);
+  localStorage.setItem("contadorCiclos", "0");
+  localStorage.setItem("contadorTiempo", "0");
 }
 
 ////carga y manupulacion de datos
@@ -74,8 +74,8 @@ $(document).ready(function() {
     //sumamos a este contador, que lleva las decimas de segundo
     contadorTiempo = parseInt(new Date() - fechaInicio);
 
-    localStorage.setItem("contadorTiempo", contadorTiempo += parseInt(localStorage.getItem("contadorTiempo")));
-    localStorage.setItem("contadorCiclos", contadorCiclos += parseInt(localStorage.getItem("contadorCiclos")));
+    localStorage.setItem("contadorTiempo", contadorTiempo + parseInt(localStorage.getItem("contadorTiempo")));
+    localStorage.setItem("contadorCiclos", contadorCiclos + parseInt(localStorage.getItem("contadorCiclos")));
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
     if (!historico) {
