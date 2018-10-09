@@ -38,11 +38,11 @@ $(document).ready(function() {
       auto = result.toString();
     });
     if (auto == 0) {
-      document.getElementById("a").display = "none";
-      document.getElementById("m").display = "block";
+      document.getElementById("auto").display = "none";
+      document.getElementById("manual").display = "block";
     } else {
-      document.getElementById("a").display = "block";
-      document.getElementById("m").display = "none";
+      document.getElementById("auto").display = "block";
+      document.getElementById("manual").display = "none";
     }
   });
 
