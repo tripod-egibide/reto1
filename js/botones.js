@@ -32,25 +32,32 @@ $(document).ready(function() {
         contadorCiclos++;
       }
     });
-    //controla las funciones de
+    
+    //controla la variable de alarma
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString();
-      // TODO: habilitar y deshabilitar los divs auto y manual dependiendo del resultado
     });
-    //controla la variable de alarma
+      if (auto == 0){
+          document.getElementById("a").display = "none";
+          document.getElementById("m").display = "block";
+      }else {
+          document.getElementById("a").display = "block";
+          document.getElementById("m").display = "none";
+      }    
+  });
+
     $.get("htm/alarm1.htm", function(result) {
       alarm1 = result.toString();
       //si no hay ningun error, la variable es zero
-      //así que tenemos que controlar otros valores
+      //asï¿½ que tenemos que controlar otros valores
       if (alarm1 != 0) {
-        alert("Alarma: " + alarm1 +
-          "\nPor favor solucione el problema y pulse el boton de rearme.");
-        //tambien queremos llevar un historial de alarmas
         ultimaAlarmaTiempo = Date.now();
         ultimaAlarmaCodigo = alarm1;
-        // TODO: ventanita de alarma
+        document.getElementsByClassName("alarma")[0].innerHTML = "Alarma: " + alarm1 +
+            "\nPor favor solucione el problema y pulse el boton de rearme."
       } else if (ultimaAlarmaTiempo != null) {
         registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
+        document.getElementsByClassName("alarma")[0].innerHTML = ""
       }
     });
 
@@ -59,7 +66,8 @@ $(document).ready(function() {
     localStorage.contadorTiempo = contadorTiempo;
     localStorage.contadorCiclos = contadorCiclos;
     localStorage.registroAlarmas = registroAlarmas;
-    // TODO: reemplazar el temporal por un booleano real y añadir lo de las alarmas
+  
+    // TODO: reemplazar el temporal por un booleano real y aï¿½adir lo de las alarmas
     //mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
     if (booleanoHistoricoTEMPORALTEMPORALTEMPORALTEMPORALTEMPORAAAAAAAAAAAAAAAAAAAAAL) {
       $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
@@ -100,7 +108,7 @@ function leerVariable(variable) {
 ////funcionamiento de botones especiales
 function autoManual() {
   //actua como interruptor, activando o desactivando el booleano intermitentemente
-  //no cambiamos la variable auto aquí para evitar problemas, de todos modos se actualiza diez veces por segundo
+  //no cambiamos la variable auto aquï¿½ para evitar problemas, de todos modos se actualiza diez veces por segundo
   if (auto == 1) {
     cambiarValor("MAUTO", false)
   } else {

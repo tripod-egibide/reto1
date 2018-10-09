@@ -2,7 +2,24 @@
 <div class="row">
   <div class="col66">
     <div class="animacion">
-      <!-- esto se puede quitar en lo que los graficos de la animacion estén hechos -->
+      <div class="col100">
+        <button onclick="go()">Go</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="fase12()">fase12</button>
+        <button onclick="fase23()">fase23</button>
+        <button onclick="fase31()">fase31</button>
+        <div class="b" id="goAnimacion">o</div>
+      </div>
+      <div class="col33Fija">
+        <p>1</p>
+      </div>
+      <div class="col33Fija">
+        <p>2</p>
+      </div>
+      <div class="col33Fija">
+        <p>3</p>
+      </div>
+      <!-- esto se puede quitar en lo que los graficos de la animacion estï¿½n hechos -->
       <button type="button" id="posicion1" onclick="boton('POSICION1')">Posicion 1</button>
       <button type="button" id="posicion2" onclick="boton('POSICION2')">Posicion 2</button>
       <button type="button" id="posicion3" onclick="boton('POSICION3')">Posicion 3</button>
@@ -12,7 +29,7 @@
         <button type="button" id="jogm" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
         <button type="button" id="jogp" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)">Jog+</button><br>
         <form method="post">
-          <input type="number" placeholder="Salto de posición" min=0 max=50000 id="slt_pos_in" name='"webdata".POSICION' type="text">
+          <input type="number" placeholder="Salto de posiciï¿½n" min=0 max=50000 id="slt_pos_in" name='"webdata".POSICION' type="text">
           <input type="submit" value="OK" id="slt_pos_bt">
         </form>
         <form method="post">
@@ -21,9 +38,9 @@
         </form>
       </div>
       <div class="auto">
-        <button type="button" name="Sensor 1" id="fc1" onclick="boton('FC1')">FC1</button>
-        <button type="button" name="Sensor 2" id="fc2" onclick="boton('FC2')">FC2</button>
-        <button type="button" name="Sensor 3" id="fc3" onclick="boton('FC3')">FC3</button><br>
+        <button type="button" name="Sensor 1" id="fc1"  class="sensor" onclick="boton('FC1')">FC1</button>
+        <button type="button" name="Sensor 2" id="fc2"  class="sensor" onclick="boton('FC2')">FC2</button>
+        <button type="button" name="Sensor 3" id="fc3"  class="sensor" onclick="boton('FC3')">FC3</button><br>
         <form method="post">
           <input type="number" placeholder="Posicion 1" name='"webdata".pos1' type="text" min=0 max=50000 id="pos1">
           <input type="number" placeholder="Posicion 2" name='"webdata".pos2' type="text" min=0 max=50000 id="pos2">
@@ -42,6 +59,8 @@
     <button type="button" name="origen" id="origen" onclick="boton('InicioOrigen')">Origen</button><br>
     <button type="button" name="rearme" id="rearme" onclick="boton('REARME')">Rearme</button>
     <button type="button" name="stop" id="stop" onclick="boton('STOP')">Stop</button>
+      <button type="button" id="jogm_movil" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
+    <button type="button" id="jogp_movil" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)">Jog+</button><br>
   </div>
 </div>
 <div class="info">
@@ -49,8 +68,8 @@
     Posicion actual: <span id="cur_pos"></span>
     Posicion destino: <span id="tar_pos"></span><br>
     <div class="sesion_historico">
-      Tiempo de ejecución: <span id="tie_eje"></span>
-      Ciclos completos en ésta sesion: <span id="cic_ses"></span><br>
+      Tiempo de ejecuciï¿½n: <span id="tie_eje"></span>
+      Ciclos completos en ï¿½sta sesion: <span id="cic_ses"></span><br>
     </div>
   </div>
 </div>
