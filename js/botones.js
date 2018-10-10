@@ -34,7 +34,9 @@ $(document).ready(function() {
       currentPosition = result.toString();
       $("#cur_pos").text(currentPosition);
       //calculamos el porcentage de la posicion del automata para la animacion
+      //y actualizamos el css en base a eso
       posPorcentage = (parseInt(currentPosition) / 50000 * 100).toFixed(2);
+      document.getElementById("marcadorAni").style.setProperty("--porcentageAnimacion", posPorcentage + "%");
       //cada vez que llega al final, aumentamos el contador
       if (currentPosition >= 49900) {
         if (!final) {
@@ -86,18 +88,18 @@ $(document).ready(function() {
       //new Date(contadorTiempo).toISOString().substr(11, 8)
       $("#tie_eje").text(new Date(contTiempo).toISOString().substr(11, 8));
       $("#cic_ses").text(contCiclos);
+      $("#cic_seg").text((contTiempo / 1000) / contCiclos);
     } else {
       $("#tie_eje").text(new Date(parseInt(localStorage.getItem("contadorTiempo"))).toISOString().substr(11, 8))
       $("#cic_ses").text(localStorage.getItem("contadorCiclos"));
+      $("#cic_seg").text((parseInt(localStorage.getItem("contadorTiempo")) / 1000) / parseInt(localStorage.getItem("contadorCiclos")));
     }
 
-    document.getElementById("marcadorAni").style.setProperty("--porcentageAnimacion", posPorcentage + "%");
   }, 100);
 });
 
 
 ////funciones universales
-
 function boton(variable) {
   //funcionalidad de botones normales, enciende y luego apaga
   cambiarValor(variable, true);
