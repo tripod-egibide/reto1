@@ -34,7 +34,7 @@ $(document).ready(function() {
       $("#cur_pos").text(currentPosition);
       //calculamos el porcentage de la posicion del automata para la animacion
       //y actualizamos el css en base a eso
-      posPorcentage = (parseInt(currentPosition) / 50000 * 100).toFixed(2);
+      posPorcentage = (parseInt(currentPosition) / 50000 * 82).toFixed(2);
       document.getElementById("marcadorAni").style.setProperty("--porcentageAnimacion", posPorcentage + "%");
       //cada vez que llega al final, aumentamos el contador
       if (currentPosition >= 49900) {
