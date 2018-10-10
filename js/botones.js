@@ -8,17 +8,17 @@ let posPorcentage, contCiclos = 0,
   historico = false,
   final = false,
   fechaInicio = new Date();
-//inicializacion de variables almacenadas
+//inicializacion de variables relacionadas con el almacenamiento
 if (!localStorage.getItem("contadorTiempo")) {
   localStorage.setItem("contadorCiclos", "0");
   localStorage.setItem("contadorTiempo", "0");
 }
 let tiempoTotal = localStorage.getItem("contadorTiempo"),
-  ciclosTotal = localStorage.getItem("contadorCiclos");
+  ciclosTotal = localStorage.getItem("contadorCiclos"),
+  cicSeg = 0;
 
 
 ////carga y manupulacion de datos
-
 $(document).ready(function() {
   $.ajaxSetup({
     cache: false
@@ -85,15 +85,15 @@ $(document).ready(function() {
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
     if (!historico) {
-      //new Date(contadorTiempo).toISOString().substr(11, 8)
       $("#tie_eje").text(new Date(contTiempo).toISOString().substr(11, 8));
       $("#cic_ses").text(contCiclos);
-      $("#cic_seg").text((contTiempo / 1000) / contCiclos);
+      cicSeg = (contTiempo / 1000) / contCiclos;
     } else {
       $("#tie_eje").text(new Date(parseInt(localStorage.getItem("contadorTiempo"))).toISOString().substr(11, 8))
       $("#cic_ses").text(localStorage.getItem("contadorCiclos"));
-      $("#cic_seg").text((parseInt(localStorage.getItem("contadorTiempo")) / 1000) / parseInt(localStorage.getItem("contadorCiclos")));
+      cicSeg = (parseInt(localStorage.getItem("contadorTiempo")) / 1000) / parseInt(localStorage.getItem("contadorCiclos"));
     }
+    $("#cic_seg").text((cicSeg == Infinity) ? 0 : cicSeg.toFixed(2));
 
   }, 100);
 });
