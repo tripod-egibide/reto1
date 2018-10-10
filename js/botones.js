@@ -2,11 +2,10 @@
 let targetPosition, currentPosition, alarm1, auto;
 //variables calculadas
 let posPorcentage, contCiclos = 0,
-  ultimaAlarmaTiempo = null,
-  ultimaAlarmaCodigo = null,
   contTiempo = 0,
   historico = false,
   final = false,
+  alarmaBoo = false,
   fechaInicio = new Date();
 //inicializacion de variables relacionadas con el almacenamiento
 if (!localStorage.getItem("contadorTiempo")) {
@@ -69,12 +68,14 @@ $(document).ready(function() {
       //si no hay ningun error, la variable es zero
       //asi que tenemos que controlar otros valores
       if (alarm1 != 0) {
-        ultimaAlarmaTiempo = Date.now();
-        ultimaAlarmaCodigo = alarm1;
-        $(".alarma").html("Alarma: " + alarm1 +
-          "\nPor favor solucione el problema y pulse el boton de rearme.")
-      } else if (ultimaAlarmaTiempo != null) {
+        if (!alarmaBoo) {
+          alarmaBoo = true;
+          $(".alarma").html("Alarma: " + alarm1 +
+            "\nPor favor solucione el problema y pulse el boton de rearme.");
+        }
+      } else {
         $(".alarma").html("")
+        alarmaBoo = false;
       }
     });
 
