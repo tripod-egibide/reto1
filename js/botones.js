@@ -91,7 +91,7 @@ $(document).ready(function() {
       $("#cic_ses").text(localStorage.getItem("contadorCiclos"));
     }
 
-    style.setProperty("--porcentageAnimacion", posPorcentage);
+    document.getElementById("marcadorAni").style.setProperty("--porcentageAnimacion", posPorcentage + "%");
   }, 100);
 });
 
