@@ -1,13 +1,20 @@
 //variables de lectura
 let targetPosition, currentPosition, alarm1, auto;
 //variables calculadas
-let posPorcentage, contadorCiclos = 0,
+let posPorcentage, contCiclos = 0,
   ultimaAlarmaTiempo = null,
   ultimaAlarmaCodigo = null,
-  registroAlarmas = [],
-  contadorTiempo = 0,
-  historico = false;
-
+  contTiempo = 0,
+  historico = false,
+  final = false,
+  fechaInicio = new Date();
+//inicializacion de variables almacenadas
+if (!localStorage.getItem("contadorTiempo")) {
+  localStorage.setItem("contadorCiclos", "0");
+  localStorage.setItem("contadorTiempo", "0");
+}
+let tiempoTotal = localStorage.getItem("contadorTiempo"),
+  ciclosTotal = localStorage.getItem("contadorCiclos");
 
 
 ////carga y manupulacion de datos
@@ -30,7 +37,12 @@ $(document).ready(function() {
       posPorcentage = (parseInt(currentPosition) / 50000 * 100).toFixed(2);
       //cada vez que llega al final, aumentamos el contador
       if (currentPosition >= 49900) {
-        contadorCiclos++;
+        if (!final) {
+          contCiclos++;
+          final = true;
+        }
+      } else {
+        final = false;
       }
     });
 
@@ -38,13 +50,13 @@ $(document).ready(function() {
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString();
       //habilitamos y deshabilitamos parte de la interfaz
-      // if (auto == false) {
-      //   document.getElementsByClassName("auto")[0].style.display = "none";
-      //   document.getElementsByClassName("manual")[0].style.display = "block";
-      // } else {
-      //   document.getElementsByClassName("auto")[0].style.display = "block";
-      //   document.getElementsByClassName("manual")[0].style.display = "none";
-      // }
+      if (auto == false) {
+        document.getElementsByClassName("auto")[0].style.display = "none";
+        document.getElementsByClassName("manual")[0].style.display = "block";
+      } else {
+        document.getElementsByClassName("auto")[0].style.display = "block";
+        document.getElementsByClassName("manual")[0].style.display = "none";
+      }
     });
 
     //controla las posibles alarmas
@@ -55,29 +67,28 @@ $(document).ready(function() {
       if (alarm1 != 0) {
         ultimaAlarmaTiempo = Date.now();
         ultimaAlarmaCodigo = alarm1;
-        // $(".alarma").html("<i class='material-icons'>warning</i><br>Alarma: " + alarm1 +
-        //   "\nPor favor solucione el problema y pulse el boton de rearme.")
+        $(".alarma").html("Alarma: " + alarm1 +
+          "\nPor favor solucione el problema y pulse el boton de rearme.")
       } else if (ultimaAlarmaTiempo != null) {
-        registroAlarmas.push([ultimaAlarmaTiempo, ultimaAlarmaCodigo]);
         $(".alarma").html("")
       }
     });
 
+    //sumamos a este contador, que lleva las decimas de segundo
+    contTiempo = parseInt(new Date() - fechaInicio);
 
-    contadorTiempo++;
 
-    localStorage.contadorTiempo = contadorTiempo;
-    localStorage.contadorCiclos = contadorCiclos;
-    localStorage.registroAlarmas = registroAlarmas;
+    localStorage.setItem("contadorTiempo", contTiempo + parseInt(tiempoTotal));
+    localStorage.setItem("contadorCiclos", contCiclos + parseInt(ciclosTotal));
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
-    if (historico) {
-      $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
-      $("#cis_ses").text(contadorCiclos);
+    if (!historico) {
+      //new Date(contadorTiempo).toISOString().substr(11, 8)
+      $("#tie_eje").text(new Date(contTiempo).toISOString().substr(11, 8));
+      $("#cic_ses").text(contCiclos);
     } else {
-      $("#tie_eje").text(new Date(localStorage.contadorTiempo * 100)
-        .toISOString().substr(11, 8));
-      $("#cis_ses").text(localStorage.contadorCiclos);
+      $("#tie_eje").text(new Date(parseInt(localStorage.getItem("contadorTiempo"))).toISOString().substr(11, 8))
+      $("#cic_ses").text(localStorage.getItem("contadorCiclos"));
     }
   }, 100);
 });
