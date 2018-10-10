@@ -407,9 +407,11 @@ input {
     display: none;
   }
 }
+
 #marcadorAni {
   position: absolute;
   width: 33%;
+  transition: padding-left 0.1s;
   padding-left: var(--porcentageAnimacion);
   color: #1985a1;
 }
