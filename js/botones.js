@@ -1,14 +1,18 @@
 //variables de lectura
 let targetPosition, currentPosition, alarm1, auto;
 //variables calculadas
-let posPorcentage, contadorCiclos = 0,
+let posPorcentage, contCiclos = 0,
   ultimaAlarmaTiempo = null,
   ultimaAlarmaCodigo = null,
-  contadorTiempo = 0,
-  historico = false;
-let final = false;
-
-
+  contTiempo = 0,
+  historico = false,
+  final = false,
+  fechaInicio = new Date();
+//inicializacion de variables almacenadas
+if (!localStorage.getItem("contadorTiempo")) {
+  localStorage.setItem("contadorCiclos", "0");
+  localStorage.setItem("contadorTiempo", "0");
+}
 
 ////carga y manupulacion de datos
 
@@ -31,7 +35,7 @@ $(document).ready(function() {
       //cada vez que llega al final, aumentamos el contador
       if (currentPosition >= 49900) {
         if (!final) {
-          contadorCiclos++;
+          contCiclos++;
           final = true;
         }
       } else {
@@ -68,19 +72,20 @@ $(document).ready(function() {
     });
 
     //sumamos a este contador, que lleva las decimas de segundo
-    contadorTiempo++;
+    contTiempo = parseInt(new Date() - fechaInicio);
 
-    localStorage.setItem("contadorTiempo", contadorTiempo += parseInt(localStorage.getItem("contadorTiempo")));
-    localStorage.setItem("contadorCiclos", contadorCiclos += parseInt(localStorage.getItem("contadorCiclos")));
+
+    localStorage.setItem("contadorTiempo", contTiempo + parseInt(localStorage.getItem("contadorTiempo")));
+    localStorage.setItem("contadorCiclos", contCiclos + parseInt(localStorage.getItem("contadorCiclos")));
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
     if (!historico) {
-      $("#tie_eje").text(new Date(contadorTiempo * 100).toISOString().substr(11, 8));
-      $("#cis_ses").text(contadorCiclos.toString());
+      //new Date(contadorTiempo).toISOString().substr(11, 8)
+      $("#tie_eje").text(new Date(contTiempo).toISOString().substr(11, 8));
+      $("#cis_ses").text(contCiclos);
     } else {
-      $("#tie_eje").text(new Date(localStorage.getItem("contadorTiempo") * 100)
-        .toISOString().substr(11, 8));
-      $("#cis_ses").text(localStorage.contadorCiclos);
+      $("#tie_eje").text(new Date(localStorage.getItem("contadorTiempo")).toISOString().substr(11, 8));
+      $("#cis_ses").text(localStorage.getItem("contadorCiclos"));
     }
   }, 100);
 });
