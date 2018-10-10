@@ -3,11 +3,6 @@
   --porcentageAnimacion: 0%;
 }
 
-#div1 {
-  background-color: var(--main-color);
-  padding: var(--pane-padding);
-}
-
 /*
 document.getElementById("elemento").style.setProperty(--main-color, "blue")
 */
@@ -282,12 +277,9 @@ input {
 }
 
 .animacion {
-  margin-bottom: 5%;
-  height: 1%;
-}
-
-.marcador {
-  transform: rotate(90deg);
+  position: relative;
+  margin: auto;
+  margin-bottom: 10%;
 }
 
 /* Animaciones */
@@ -415,7 +407,9 @@ input {
     display: none;
   }
 }
-
 #marcadorAni {
+  position: absolute;
+  width: 33%;
   padding-left: var(--porcentageAnimacion);
+  color: #1985a1;
 }
