@@ -1,35 +1,40 @@
 <script type="text/javascript" src="js/botones.js"></script>
+<div class="row animacion">
+    <!--<i class="material-icons">expand_more</i>-->
+  <div class="b" id="goAnimacion"><i class="material-icons marcador">label</i></div>
+    <hr class="anima">
+  <div class="col33Fija">
+      <i class="material-icons">adjust</i>
+  </div>
+  <div class="col33Fija">
+      <i class="material-icons">adjust</i>
+  </div>
+  <div class="col33Fija">
+      <i class="material-icons">adjust</i>
+  </div>
+  <div class="col100">
+    <button onclick="go()">Go</button>
+    <button onclick="pause()">Pause</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="fase12()">fase12</button>
+    <button onclick="fase23()">fase23</button>
+    <button onclick="fase31()">fase31</button>
+  </div>
+</div>
 <div class="row">
   <div class="col66">
     <div class="animacion">
-      <div class="col100">
-        <button onclick="go()">Go</button>
-        <button onclick="stop()">Stop</button>
-        <button onclick="fase12()">fase12</button>
-        <button onclick="fase23()">fase23</button>
-        <button onclick="fase31()">fase31</button>
-        <div class="b" id="goAnimacion">o</div>
-      </div>
-      <div class="col33Fija">
-        <p>1</p>
-      </div>
-      <div class="col33Fija">
-        <p>2</p>
-      </div>
-      <div class="col33Fija">
-        <p>3</p>
-      </div>
       <!-- esto se puede quitar en lo que los graficos de la animacion est�n hechos -->
-      <button type="button" id="posicion1" onclick="boton('POSICION1')">Posicion 1</button>
-      <button type="button" id="posicion2" onclick="boton('POSICION2')">Posicion 2</button>
-      <button type="button" id="posicion3" onclick="boton('POSICION3')">Posicion 3</button>
+      <!--<button type="button" id="posicion1" onclick="boton('POSICION1')">Posicion 1</button>-->
+      <!--<button type="button" id="posicion2" onclick="boton('POSICION2')">Posicion 2</button>-->
+      <!--<button type="button" id="posicion3" onclick="boton('POSICION3')">Posicion 3</button>-->
     </div>
     <div class="controles">
       <div class="manual">
-        <button type="button" id="jogm" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
-        <button type="button" id="jogp" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)">Jog+</button><br>
+        <button type="button" id="jogm" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)"><i class="material-icons">arrow_back</i></button>
+        <button type="button" id="jogp" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)"><i class="material-icons">arrow_forward</i></button><br>
         <form method="post">
-          <input type="number" placeholder="Salto de posicion" min=0 max=50000 id="slt_pos_in" name='"webdata".POSICION' type="text">
+          <input type="number" placeholder="Salto de posición" min=0 max=50000 id="slt_pos_in" name='"webdata".POSICION' type="text">
           <input type="submit" value="OK" id="slt_pos_bt">
         </form>
         <form method="post">
@@ -38,9 +43,9 @@
         </form>
       </div>
       <div class="auto">
-        <button type="button" name="Sensor 1" id="fc1" class="sensor" onclick="boton('FC1')">FC1</button>
-        <button type="button" name="Sensor 2" id="fc2" class="sensor" onclick="boton('FC2')">FC2</button>
-        <button type="button" name="Sensor 3" id="fc3" class="sensor" onclick="boton('FC3')">FC3</button><br>
+        <button type="button" name="Sensor 1" id="fc1" class="sensor" onclick="boton('FC1')"><i class="material-icons">blur_on</i></button>
+        <button type="button" name="Sensor 2" id="fc2" class="sensor" onclick="boton('FC2')"><i class="material-icons">blur_on</i></button>
+        <button type="button" name="Sensor 3" id="fc3" class="sensor" onclick="boton('FC3')"><i class="material-icons">blur_on</i></button><br>
         <form method="post">
           <input type="number" placeholder="Posicion 1" name='"webdata".pos1' type="text" min=0 max=50000 id="pos1">
           <input type="number" placeholder="Posicion 2" name='"webdata".pos2' type="text" min=0 max=50000 id="pos2">
@@ -55,15 +60,16 @@
   </div>
   <div class="col33">
     <button type="button" name="auto" id="auto" onclick="autoManual()">Auto/Manual</button><br>
-    <button type="button" name="marcha" id="marcha" onclick="boton('MARCHA')">Marcha</button>
-    <button type="button" name="origen" id="origen" onclick="boton('InicioOrigen')">Origen</button><br>
-    <button type="button" name="rearme" id="rearme" onclick="boton('REARME')">Rearme</button>
-    <button type="button" name="stop" id="stop" onclick="boton('STOP')">Stop</button>
-    <button type="button" id="jogm_movil" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)">Jog-</button>
-    <button type="button" id="jogp_movil" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)">Jog+</button><br>
+    <button type="button" name="marcha" id="marcha" onclick="boton('MARCHA')"><i class="material-icons">play_circle_filled</i><br>Marcha</button>
+    <button type="button" name="origen" id="origen" onclick="boton('InicioOrigen')"><i class="material-icons">replay</i><br>Origen</button><br>
+    <button type="button" name="rearme" id="rearme" onclick="boton('REARME')"><i class="material-icons">loop</i><br>Rearme</button>
+    <button type="button" name="stop" id="stop" onclick="boton('STOP')"><i class="material-icons">pause_circle_filled</i><br>Stop</button>
+    <button type="button" id="jogm_movil" onmousedown="cambiarValor('JOGM', true)" onmouseup="cambiarValor('JOGM', false)"><i class="material-icons">arrow_back</i></button>
+    <button type="button" id="jogp_movil" onmousedown="cambiarValor('JOGP', true)" onmouseup="cambiarValor('JOGP', false)"><i class="material-icons">arrow_forward</i></button><br>
   </div>
 </div>
-<div class="info">
+<div class="info row">
+  <hr class="separador">
   <div class="lectura">
     Posicion actual: <span id="cur_pos"></span>
     Posicion destino: <span id="tar_pos"></span><br>
@@ -71,11 +77,6 @@
       <button type="button" onclick=sesionHistorico() id="ses_his">Ver Historico</button>
       Tiempo de ejecucion: <span id="tie_eje"></span>
       Ciclos completos en esta sesion: <span id="cic_ses"></span><br>
-    </div>
-    <div class="info_alarma">
-      <span id="ia_tiempo"></span>
-      <span id="ia_codigo"></span>
-      <span id="ia_media"></span>
     </div>
   </div>
 </div>
