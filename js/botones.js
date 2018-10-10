@@ -13,6 +13,8 @@ if (!localStorage.getItem("contadorTiempo")) {
   localStorage.setItem("contadorCiclos", "0");
   localStorage.setItem("contadorTiempo", "0");
 }
+let tiempoTotal = localStorage.getItem("contadorTiempo"),
+  ciclosTotal = localStorage.getItem("contadorCiclos");
 
 ////carga y manupulacion de datos
 
@@ -75,14 +77,14 @@ $(document).ready(function() {
     contTiempo = parseInt(new Date() - fechaInicio);
 
 
-    localStorage.setItem("contadorTiempo", contTiempo + parseInt(localStorage.getItem("contadorTiempo")));
-    localStorage.setItem("contadorCiclos", contCiclos + parseInt(localStorage.getItem("contadorCiclos")));
+    localStorage.setItem("contadorTiempo", contTiempo + parseInt(tiempoTotal));
+    localStorage.setItem("contadorCiclos", contCiclos + parseInt(ciclosTotal));
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
     if (!historico) {
       //new Date(contadorTiempo).toISOString().substr(11, 8)
       $("#tie_eje").text(new Date(contTiempo).toISOString().substr(11, 8));
-      $("#cis_ses").text(contCiclos);
+      $("#cic_ses").text(contCiclos);
     } else {
       $("#tie_eje").text(new Date(localStorage.getItem("contadorTiempo")).toISOString().substr(11, 8));
       $("#cis_ses").text(localStorage.getItem("contadorCiclos"));
