@@ -1,28 +1,36 @@
-/*user-select: all;
-    :root{
-        --main-color: hotpink;
-        --pane-padding: 5px 42px;
-    }
-    #div1 {
-    background-color: var(--main-color);
-    padding: var(--pane-padding);
-    }
-
+/*user-select: all;*/
+:root{
+    --main-color: hotpink;
+    --pane-padding: 5px 42px;
+}
+#div1 {
+background-color: var(--main-color);
+padding: var(--pane-padding);
+}
+/*
 document.getElementById("elemento").style.setProperty(--main-color, "blue")
 */
 * {
     box-sizing: border-box;
 }
 body{
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
     margin: 0;
-    background-color: #dcdcdd;
+    height: 100%;
     color: #46494c;
     text-align: center;
 }
 #contenido{
-    max-width: 100%;
+    background-color: #dcdcdd;
+    max-width: 90%;
     margin: auto;
+    height: 100%;
+    padding: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-left: 2px solid #666;
+    border-right: 2px solid #666;
+    border-radius: 10px;
 }
 .row{
     width: 80%;
@@ -41,6 +49,7 @@ body{
     /*padding-top: 10%;*/
 }
 .col66{
+    display: none;
     float: left;
     width: 100%;
     background-color: #dcdcdd;
@@ -52,32 +61,31 @@ header {
     color: #dcdcdd;
 }
 footer {
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    width: 100%;
     padding: 10px;
     text-align: center;
     color: #dcdcdd;
 }
 #pie{
-    width: 90%;
     margin: auto;
     background-color: #4c5c68;
 }
 nav {
-    width: 90%;
+    width: 100%;
     margin: auto;
     overflow: hidden;
     background-color: #4c5c68;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
 }
 nav a {
     width: 100%;
     float: left;
     display: block;
-    color: #1985a1;
-    text-align: center;
+    color: white;
+    background-color: #c5c3c6;
     padding: 14px 20px;
-    text-decoration: none;
+    font-size: 0;
 }
 nav a.right {
     float: right;
@@ -88,12 +96,43 @@ nav a:hover {
 }
 nav a.active {
     background-color: #666;
-    color: #1985a1;
 }
-button{
-    background-color: transparent;
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+hr.anima{
+    position: relative;
+    top: 20px;
+    color: black;
+    border: 1px solid black;
+    width: 66%;
+}
+hr.separador{
+    position: relative;
+    top: 20px;
+    color: black;
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 10%;
+}
+button, input[type=submit], input[type=number]{
+    background-color: #666;
     color: white;
     border: 1px solid white;
+    border-radius: 4px;
+    padding: 5px;
+}
+/*button:focus, button:active{*/
+    /*background-color: transparent;*/
+    /*color: #666;*/
+    /*border: 1px solid #666;*/
+    /*border-radius: 4px;*/
+/*}*/
+button:hover{
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #666;
     border-radius: 4px;
 }
 .modal {
@@ -136,17 +175,16 @@ button{
     cursor: pointer;
 }
 input {
-    width: 100%;
+    width: 25%;
+    height: 50%;
 }
 .sensor {
-    width: 32%;
+    width: 16%;
 }
 .col33 button{
     width: 49%;
+    margin: auto;
     margin-bottom: 0.1em;
-}
-.auto{
-    /*display: none;*/
 }
 
 /*PRUEBAS*/
@@ -159,17 +197,16 @@ input {
     float: left;
     width: 33.3%;
     text-align: center;
-    border: 1px solid black;
 }
 .b{
-    padding-left: 15%;
+    padding-left: 10.1%;
     position: absolute;
 }
 .a{
 
     color: red;
     animation-name: example;
-    animation-duration: 4s;
+    animation-duration: 2s;
     /*animation-iteration-count: infinite;*/
     /*animation-direction: alternate;*/
     /*animation-timing-function: linear;*/
@@ -198,7 +235,24 @@ input {
     background-color: red;
     color: white;
     border-radius: 4px;
+    z-index: 9;
     /*opacity: 0.8;*/
+}
+#jogm, #jogp{
+    width: 25%;
+}
+#jogm_movil, #jogp_movil{
+    display: inline-block;
+}
+.lectura{
+    margin-top: 5%;
+}
+.animacion{
+    margin-bottom: 5%;
+    height: 1%;
+}
+.marcador{
+    transform: rotate(90deg);
 }
 
 /* Animaciones */
@@ -212,22 +266,22 @@ input {
 }
 
 @keyframes example {
-    0%  {color:red; padding-left: 15%;}
-    50%  {color:green; padding-left: 49%;}
-    100% {color:blue; padding-left: 83%;}
+    0%  {color:red; padding-left: 10.1%;}
+    50%  {color:green; padding-left: 34.2%;}
+    100% {color:blue; padding-left: 58%;}
 }
 
 @keyframes fase12 {
-    0%  {color:red; padding-left: 15%;}
-    100%  {color:green; padding-left: 49%;}
+    0%  {color:red; padding-left: 10.1%;}
+    100%  {color:green; padding-left: 34.2%;}
 }
 @keyframes fase23 {
-    0%  {color:red; padding-left: 49%;}
-    100% {color:blue; padding-left: 83%;}
+    0%  {color:red; padding-left: 34.2%;}
+    100% {color:blue; padding-left: 58%;}
 }
 @keyframes fase31 {
-    0%  {color:red; padding-left: 83%;}
-    100% {color:blue; padding-left: 15%;}
+    0%  {color:red; padding-left: 58%;}
+    100% {color:blue; padding-left: 10.1%;}
 }
 
 /* Responsividad */
@@ -238,6 +292,7 @@ input {
 /* Tablet */
 @media screen and (min-width:320px) {
     .col66 {
+        display: block;
         width:67%;
     }
     .col33 {
@@ -245,11 +300,17 @@ input {
     }
     nav a {
         width: 50%;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    #jogm_movil, #jogp_movil{
+        display: none;
     }
 }
 /* Pantalla */
 @media screen and (min-width:768px) {
     .col66 {
+        display: block;
         width:50%;
     }
     .col33 {
@@ -257,5 +318,10 @@ input {
     }
     nav a {
         width: Auto;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    #jogm_movil, #jogp_movil{
+        display: none;
     }
 }

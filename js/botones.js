@@ -16,6 +16,7 @@ if (!localStorage.getItem("contadorTiempo")) {
 let tiempoTotal = localStorage.getItem("contadorTiempo"),
   ciclosTotal = localStorage.getItem("contadorCiclos");
 
+
 ////carga y manupulacion de datos
 
 $(document).ready(function() {
