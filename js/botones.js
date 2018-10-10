@@ -55,11 +55,11 @@ $(document).ready(function() {
       if (auto == false) {
         document.getElementsByClassName("auto")[0].style.display = "none";
         document.getElementsByClassName("manual")[0].style.display = "block";
-        $("#tie_eje").text("Auto");
+        $("#auto").text("Auto");
       } else {
         document.getElementsByClassName("auto")[0].style.display = "block";
         document.getElementsByClassName("manual")[0].style.display = "none";
-        $("#tie_eje").text("Manual");
+        $("#auto").text("Manual");
       }
     });
 
