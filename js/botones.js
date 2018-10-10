@@ -8,17 +8,17 @@ let posPorcentage, contCiclos = 0,
   historico = false,
   final = false,
   fechaInicio = new Date();
-//inicializacion de variables almacenadas
+//inicializacion de variables relacionadas con el almacenamiento
 if (!localStorage.getItem("contadorTiempo")) {
   localStorage.setItem("contadorCiclos", "0");
   localStorage.setItem("contadorTiempo", "0");
 }
 let tiempoTotal = localStorage.getItem("contadorTiempo"),
-  ciclosTotal = localStorage.getItem("contadorCiclos");
+  ciclosTotal = localStorage.getItem("contadorCiclos"),
+  cicSeg = 0;
 
 
 ////carga y manupulacion de datos
-
 $(document).ready(function() {
   $.ajaxSetup({
     cache: false
@@ -34,7 +34,9 @@ $(document).ready(function() {
       currentPosition = result.toString();
       $("#cur_pos").text(currentPosition);
       //calculamos el porcentage de la posicion del automata para la animacion
-      posPorcentage = (parseInt(currentPosition) / 50000 * 100).toFixed(2);
+      //y actualizamos el css en base a eso
+      posPorcentage = (parseInt(currentPosition) / 50000 * 82).toFixed(2);
+      document.getElementById("marcadorAni").style.setProperty("--porcentageAnimacion", posPorcentage + "%");
       //cada vez que llega al final, aumentamos el contador
       if (currentPosition >= 49900) {
         if (!final) {
@@ -50,13 +52,13 @@ $(document).ready(function() {
     $.get("htm/MAUTO.htm", function(result) {
       auto = result.toString();
       //habilitamos y deshabilitamos parte de la interfaz
-      if (auto == false) {
-        document.getElementsByClassName("auto")[0].style.display = "none";
-        document.getElementsByClassName("manual")[0].style.display = "block";
-      } else {
-        document.getElementsByClassName("auto")[0].style.display = "block";
-        document.getElementsByClassName("manual")[0].style.display = "none";
-      }
+      // if (auto == false) {
+      //   document.getElementsByClassName("auto")[0].style.display = "none";
+      //   document.getElementsByClassName("manual")[0].style.display = "block";
+      // } else {
+      //   document.getElementsByClassName("auto")[0].style.display = "block";
+      //   document.getElementsByClassName("manual")[0].style.display = "none";
+      // }
     });
 
     //controla las posibles alarmas
@@ -83,19 +85,21 @@ $(document).ready(function() {
 
     // mostramos datos de sesion o historicos dependiendo un booleano controlado por un boton
     if (!historico) {
-      //new Date(contadorTiempo).toISOString().substr(11, 8)
       $("#tie_eje").text(new Date(contTiempo).toISOString().substr(11, 8));
       $("#cic_ses").text(contCiclos);
+      cicSeg = (contTiempo / 1000) / contCiclos;
     } else {
       $("#tie_eje").text(new Date(parseInt(localStorage.getItem("contadorTiempo"))).toISOString().substr(11, 8))
       $("#cic_ses").text(localStorage.getItem("contadorCiclos"));
+      cicSeg = (parseInt(localStorage.getItem("contadorTiempo")) / 1000) / parseInt(localStorage.getItem("contadorCiclos"));
     }
+    $("#cic_seg").text((cicSeg == Infinity) ? 0 : cicSeg.toFixed(2));
+
   }, 100);
 });
 
 
 ////funciones universales
-
 function boton(variable) {
   //funcionalidad de botones normales, enciende y luego apaga
   cambiarValor(variable, true);
