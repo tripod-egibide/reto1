@@ -49,6 +49,7 @@ body{
     /*padding-top: 10%;*/
 }
 .col66{
+    display: none;
     float: left;
     width: 100%;
     background-color: #dcdcdd;
@@ -81,7 +82,8 @@ nav a {
     width: 100%;
     float: left;
     display: block;
-    color: #1985a1;
+    color: white;
+    background-color: #c5c3c6;
     padding: 14px 20px;
     font-size: 0;
 }
@@ -94,18 +96,25 @@ nav a:hover {
 }
 nav a.active {
     background-color: #666;
-    color: #1985a1;
 }
 ::placeholder {
     color: white;
     opacity: 1;
 }
-hr{
+hr.anima{
     position: relative;
     top: 20px;
     color: black;
     border: 1px solid black;
     width: 66%;
+}
+hr.separador{
+    position: relative;
+    top: 20px;
+    color: black;
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 10%;
 }
 button, input[type=submit], input[type=number]{
     background-color: #666;
@@ -233,7 +242,7 @@ input {
     width: 25%;
 }
 #jogm_movil, #jogp_movil{
-    display: none;
+    display: inline-block;
 }
 .lectura{
     margin-top: 5%;
@@ -283,6 +292,7 @@ input {
 /* Tablet */
 @media screen and (min-width:320px) {
     .col66 {
+        display: block;
         width:67%;
     }
     .col33 {
@@ -294,12 +304,13 @@ input {
         text-decoration: none;
     }
     #jogm_movil, #jogp_movil{
-        display: inline-block;
+        display: none;
     }
 }
 /* Pantalla */
 @media screen and (min-width:768px) {
     .col66 {
+        display: block;
         width:50%;
     }
     .col33 {
@@ -311,6 +322,6 @@ input {
         text-decoration: none;
     }
     #jogm_movil, #jogp_movil{
-        display: inline-block;
+        display: none;
     }
 }
