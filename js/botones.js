@@ -89,6 +89,8 @@ $(document).ready(function() {
       $("#tie_eje").text(new Date(parseInt(localStorage.getItem("contadorTiempo"))).toISOString().substr(11, 8))
       $("#cic_ses").text(localStorage.getItem("contadorCiclos"));
     }
+
+    style.setProperty("--porcentageAnimacion", posPorcentage);
   }, 100);
 });
 
