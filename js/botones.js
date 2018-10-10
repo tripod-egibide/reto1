@@ -86,8 +86,8 @@ $(document).ready(function() {
       $("#tie_eje").text(new Date(contTiempo).toISOString().substr(11, 8));
       $("#cic_ses").text(contCiclos);
     } else {
-      $("#tie_eje").text(new Date(localStorage.getItem("contadorTiempo")).toISOString().substr(11, 8));
-      $("#cis_ses").text(localStorage.getItem("contadorCiclos"));
+      $("#tie_eje").text(new Date(parseInt(localStorage.getItem("contadorTiempo"))).toISOString().substr(11, 8))
+      $("#cic_ses").text(localStorage.getItem("contadorCiclos"));
     }
   }, 100);
 });
