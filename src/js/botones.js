@@ -135,7 +135,6 @@ function autoManual() {
 }
 
 function sesionHistorico() {
-  //no creo que esto requiera explicacion
   historico = !historico
   if (historico) {
     $("#ses_his").text("Ver Sesion");
